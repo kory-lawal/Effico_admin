@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Effico ai</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            height: 100%;
+            background-color: #f8f9fa;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        hr {
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .logo img {
+            width: 45px;
+            height: 45px;
+        }
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .ai-color {
+            background: linear-gradient(42.09deg, #3F5DC0 4.59%, #6A87EA 94.52%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+        }
+        .menu-item {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        .icon_menu{
+            margin-right: 5px;
+        }
+        .menu-item:hover {
+            background-color: #f3f4f6;
+        }
+        .submenu {
+            display: none;
+            margin-left: 20px;
+        }
+        .active {
+            font-weight: 600;
+            color: #4f46e5;
+            background-color: #ede9fe;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+        p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        .button {
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+        th {
+            text-align: left;
+            padding: 10px;
+            color: #6b7280;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        td {
+            background-color: #f9fafb;
+            padding: 16px 10px;
+        }
+        tr td:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        tr td:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .dropdown {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: #374151;
+            font-size: 14px;
+        }
+        .action-link {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .user-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-panel span {
+            margin-left: 8px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="Effico-logo.png" alt="TIME-OUT">
+                <span>effico<b class="ai-color">ai</b></span>
+            </div>
+            <div class="menu-item">
+                <img src="home.png" alt="not" class="icon_menu"> 
+                <span>Dashboard</span>
+            </div>
+            <div class="menu-item">
+                <img src="chart-2.png" alt="not" class="icon_menu"> 
+                <span>Analytics</span>
+            </div>
+            <div class="menu-item">
+                <img src="3 User.png" alt="not" class="icon_menu"> 
+                <span>Users</span>
+            </div>
+            <div class="menu-item active" onclick="toggleSubmenu()">
+                <img src="setting.png" alt="not" class="icon_menu"> 
+                <span>Settings</span>
+            </div>
+            <div class="submenu" id="settings-submenu">
+                <div class="menu-item">Company</div>
+                <div class="menu-item">Company Profile</div>
+                <div class="menu-item">Integrations</div>
+                <div class="menu-item active">Team members</div>
+                <div class="menu-item">Roles</div>
+            </div>
+            <div class="menu-item">My profile</div>
+            <div class="menu-item">Notifications</div>
+            <div class="menu-item">Security</div>
+        </div>
+        <div class="main-content">
+            <h1>Team members</h1>
+            <p>Manage the members of the efficoai Team</p>
+            <hr>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <div style="font-weight: 500;">Members (4)</div>
+                <button class="button">+ Invite new members</button>
+            </div>
+            <hr>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <img src="Avatar.png" alt="Jane Doe" class="avatar">
+                            <div>
+                                <div style="font-weight: 500;">Jane Doe (you)</div>
+                                <div style="color: #6b7280; font-size: 14px;">jane@efficoai.com</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select class="dropdown">
+                            <option>Owner</option>
+                        </select>
+                    </td>
+                    <td style="color: #10b981; font-weight: 500;">Active</td>
+                    <td><a href="#" class="action-link">•••</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <img src="Avatar2.png" alt="John Smith" class="avatar">
+                            <div>
+                                <div style="font-weight: 500;">John Smith</div>
+                                <div style="color: #6b7280; font-size: 14px;">jane@efficoai.com</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select class="dropdown">
+                            <option>Admin</option>
+                        </select>
+                    </td>
+                    <td style="color: #6b7280;">Last Active: Today</td>
+                    <td><a href="#" class="action-link">•••</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <img src="Avatar3.png" alt="Olivia Rhye" class="avatar">
+                            <div>
+                                <div style="font-weight: 500;">Olivia Rhye</div>
+                                <div style="color: #6b7280; font-size: 14px;">olivia@efficoai.com</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select class="dropdown">
+                            <option>Member</option>
+                        </select>
+                    </td>
+                    <td style="color: #6b7280;">Last Active: Yesterday</td>
+                    <td><a href="#" class="action-link">•••</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <img src="Avatar4.png" alt="Bruce Wayne" class="avatar">
+                            <div>
+                                <div style="font-weight: 500;">Bruce Wayne</div>
+                                <div style="color: #6b7280; font-size: 14px;">bruce@efficoai.com</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select class="dropdown">
+                            <option>Admin</option>
+                        </select>
+                    </td>
+                    <td style="color: #eab308; font-weight: 500;">Invited</td>
+                    <td><a href="#" class="action-link">Resend invite?</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="user-panel">
+        <img src="Avatar.png" alt="Jane Doe" class="avatar" style="width: 32px; height: 32px;">
+        <span>Jane Doe</span>
+    </div>
+    <script>
+        function toggleSubmenu() {
+            var submenu = document.getElementById("settings-submenu");
+            if (submenu.style.display === "none" || submenu.style.display === "") {
+                submenu.style.display = "block";
+            } else {
+                submenu.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
