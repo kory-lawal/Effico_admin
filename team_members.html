@@ -34,6 +34,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 30px;
+            cursor: pointer;
         }
         .logo img {
             width: 45px;
@@ -154,29 +155,50 @@
             margin-left: 8px;
             font-weight: 500;
         }
+        .tab-icon {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .tab-icon {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
-            <div class="logo">
+        <div class="sidebar" id="sidebar">
+            <div class="logo" onclick="toggleMobileMenu()">
                 <img src="Effico-logo.png" alt="TIME-OUT">
                 <span>effico<b class="ai-color">ai</b></span>
             </div>
             <div class="menu-item">
-                <img src="home.png" alt="not" class="icon_menu"> 
+                <img src="home.png" alt="Home icon" class="icon_menu"> 
                 <span>Dashboard</span>
             </div>
             <div class="menu-item">
-                <img src="chart-2.png" alt="not" class="icon_menu"> 
+                <img src="chart-2.png" alt="Analytics icon" class="icon_menu"> 
                 <span>Analytics</span>
             </div>
             <div class="menu-item">
-                <img src="3 User.png" alt="not" class="icon_menu"> 
+                <img src="3 User.png" alt="Users icon" class="icon_menu"> 
                 <span>Users</span>
             </div>
             <div class="menu-item active" onclick="toggleSubmenu()">
-                <img src="setting.png" alt="not" class="icon_menu"> 
+                <img src="setting.png" alt="Settings icon" class="icon_menu"> 
                 <span>Settings</span>
             </div>
             <div class="submenu" id="settings-submenu">
@@ -285,6 +307,7 @@
         <img src="Avatar.png" alt="Jane Doe" class="avatar" style="width: 32px; height: 32px;">
         <span>Jane Doe</span>
     </div>
+    <button class="tab-icon" onclick="toggleMobileMenu()">☰</button>
     <script>
         function toggleSubmenu() {
             var submenu = document.getElementById("settings-submenu");
@@ -292,6 +315,18 @@
                 submenu.style.display = "block";
             } else {
                 submenu.style.display = "none";
+            }
+        }
+
+        function toggleMobileMenu() {
+            var sidebar = document.getElementById("sidebar");
+            var tabIcon = document.querySelector(".tab-icon");
+            if (sidebar.style.display === "none" || sidebar.style.display === "") {
+                sidebar.style.display = "block";
+                tabIcon.style.display = "none";
+            } else {
+                sidebar.style.display = "none";
+                tabIcon.style.display = "block";
             }
         }
     </script>
