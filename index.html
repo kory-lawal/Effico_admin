@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .navbar {
+            width: 250px;
+            height: 100vh; /* Full viewport height */
+            background-color: white;
+            color: black;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed; /* Fixes the navbar */
+            top: 0;
+            left: 0;
+            overflow-y: auto; /* Adds scroll inside the navbar if needed */
+            border-right: 1px solid #ccc; /* Navbar line */
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: -20px;
+        }
+
+        .navbar .logo img {
+            max-width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            margin: 0;
+            font-size: 1.3em;
+            margin-left: -15px;
+        }
+
+        .navbar nav ul {
+            list-style-type: none;
+            padding: 0;
+            padding-top: 30px;
+        }
+
+        .navbar nav ul li {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .navbar nav ul li a {
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        .navbar nav ul li a:hover,
+        .navbar nav ul li a:focus {
+            color: blue;
+        }
+
+        .navbar nav ul li .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .navbar nav ul li .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+
+        .navbar nav ul li .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 0px 50px;
+            font-size: 14px;
+            margin-left: 250px;
+        }
+
+        .content header p {
+            font-size: 14px;
+            margin-top: -15px;
+        }
+
+        .dropdown-box-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .dropdown-box {
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .dropdown-box fieldset {
+            height: 30px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            padding: 0 10px;
+            margin: 0;
+        }
+
+        .dropdown-box fieldset p {
+            color: black;
+            margin: 0;
+            pointer-events: none; /* Prevent text selection */
+        }
+
+        .dropdown-box .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%; /* Position below the dropdown box */
+            left: 0;
+            background-color: #f9f9f9;
+            min-width: 100%; /* Adjust to fit the box */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-box .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+
+        .dropdown-box .dropdown-content a:hover {
+            background-color: #ffffff;
+        }
+
+        .dropdown-box.active .dropdown-content {
+            display: block;
+        }
+
+        .logocolor {
+            color: blue;
+        }
+
+        .date {
+            height: 45px;
+            width: 240px;
+            border-radius: 10px;
+        }
+
+        .navbar nav ul li:first-child a.selected {
+        color: blue;
+        margin-left: px;
+        }
+
+        .calendar-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .shared-calendar-container {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 760px;
+            position: relative;
+            right: 100px;
+        }
+
+        .list-container {
+            width: 150px; /* Reduce width of the sidebar */
+            padding: 15px; /* Reduce padding */
+            border-right: 1px solid #ccc; 
+            font-size: 17px;
+        }
+
+        .list {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+        }
+
+        .list li {
+                margin-bottom: 8px; /* Adjust margin */
+        }
+
+        .list a {
+                color: black;
+                text-decoration: none;
+                display: block;
+                padding: 6px 12px; /* Reduce padding */
+        }
+
+        .list a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .calendar {
+            flex: 0;
+            background-color: white;
+        }
+
+        .calendar-header {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0px;
+            padding: 15px;
+        }
+
+        .day {
+            text-align: center;
+            padding: 8px;
+            margin: 0px;
+            border-radius: 0px;
+            cursor: pointer;
+            width: 20px;
+            font-size: 15px;
+            font-weight: lighter;
+        }
+
+        .day-name {
+            font-weight: bold;
+            font-size: 15px;
+            margin-right: px;
+        }
+
+        .day.lightblue {
+            background-color: #d3dcff;
+            color: blue;
+        }
+        .day.blue{
+            background-color: blue;
+            color: white;
+        }
+
+        .vertical-divider {
+            width: .3px;
+            background-color: #b9b7b7;
+            position: absolute;
+            top: px; /* Adjust as needed */
+            bottom: px; /* Adjust as needed */
+            left: 61%;
+            transform: translateX(-50%);
+            height: 100%;
+        }
+        .navbar-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin-right: 10px; /* Adjust margin as needed */
+            vertical-align: middle; /* Aligns the icon with the text */
+        }
+
+        .email-address{
+            font-size: small;
+            color: gray;
+        }
+        .navbar nav ul li:last-child {
+            position: absolute;
+            bottom: 2px; /* Adjust to position at the bottom */
+            left: 60px;
+            width: 100%; /* Full width of the navbar */
+        }
+        .email-logo{
+            width: 15px;
+            height: 19px;
+            margin-bottom: -48px;
+            margin-left: -35px;
+            border: 1px solid blue;
+            border-radius: 10px;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10px;
+            display: flex;
+            background-color: rgb(240, 210, 255);
+            font-size: 14px;
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="Effico-logo.png" alt="Logo">
+                <h1>effico<a class="logocolor">ai</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="selected">
+                        <img src="home.png" alt="Home" class="navbar-icon">
+                    Dashboard
+                    </a></li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <img src="chart-2.png" alt="Analytics" class="navbar-icon">Analytics &#9662;</a>
+                        <div class="dropdown-content">
+                            <a href="#">Sub-item 1</a>
+                            <a href="#">Sub-item 2</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <img src="3 User.png" alt="User" class="navbar-icon">Users &#9662;</a>
+                        <div class="dropdown-content">
+                            <a href="#">Sub-item 1</a>
+                            <a href="#">Sub-item 2</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <img src="mobile.png" alt="Manage App" class="navbar-icon">Manage App &#9662;</a>
+                        <div class="dropdown-content">
+                            <a href="#">Sub-item 1</a>
+                            <a href="#">Sub-item 2</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <img src="setting.png" alt="Setting" class="navbar-icon">Settings &#9662;</a>
+                        <div class="dropdown-content">
+                            <a href="#">Sub-item 1</a>
+                            <a href="#">Sub-item 2</a>
+                        </div>
+                        <li>
+                            <div class="email">
+                                <fieldset class="email-logo">J</fieldset><a href="#">Jane Doe <br><div class="email-address"> janedoe@effico.app</div></a>
+                            </div>
+                        </li>
+                    </li>
+                </ul>
+                
+            </nav>
+        </div>
+        <div class="content">
+            <header>
+                <h1>Welcome Jane,</h1>
+                <p>Thursday, May 25</p>
+            </header>
+            <div class="dropdown-box-container">
+                <div class="dropdown-box" id="box1">
+                    <fieldset>
+                        <p>April 30, 2023 - May 29, 2023</p>
+                    </fieldset>
+                    <div class="dropdown-content">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="dropdown-box" id="box2">
+                    <fieldset>
+                        <p>Daily</p>
+                    </fieldset>
+                    <div class="dropdown-content">
+                        <a href="#">Weekly</a>
+                        <a href="#">Monthly</a>
+                        <a href="#">Yearly</a>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar-container">
+                <div class="shared-calendar-container">
+                    <div class="list-container">
+                        <ul class="list">
+                            <li><a href="#">Today</a></li>
+                            <li><a href="#">Last 7 days</a></li>
+                            <li><a href="#">Last 14 days</a></li>
+                            <li><a href="#">Last 30 days</a></li>
+                            <li><a href="#">Last 12 months</a></li>
+                            <li><a href="#">Month to date</a></li>
+                            <li><a href="#">Quarter to date</a></li>
+                            <li><a href="#">Year to date</a></li>
+                            <li><a href="#">All time</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="vertical-divid"></div>
+
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <h2>March 2023</h2>
+                        </div>
+                        <div class="calendar-body">
+                            <!-- March days -->
+                            <div class="day day-name">Mon</div>
+                            <div class="day day-name">Tue</div>
+                            <div class="day day-name">Wed</div>
+                            <div class="day day-name">Thu</div>
+                            <div class="day day-name">Fri</div>
+                            <div class="day day-name">Sat</div>
+                            <div class="day day-name">Sun</div>
+                            <!-- Add day cells here -->
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day">1</div>
+                            <div class="day">2</div>
+                            <div class="day">3</div>
+                            <div class="day blue">4</div>
+                            <div class="day lightblue">5</div>
+                            <div class="day lightblue">6</div>
+                            <div class="day lightblue">7</div>
+                            <div class="day lightblue">8</div>
+                            <div class="day lightblue">9</div>
+                            <div class="day lightblue">10</div>
+                            <div class="day lightblue">11</div>
+                            <div class="day lightblue">12</div>
+                            <div class="day lightblue">13</div>
+                            <div class="day lightblue">14</div>
+                            <div class="day lightblue">15</div>
+                            <div class="day lightblue">16</div>
+                            <div class="day lightblue">17</div>
+                            <div class="day lightblue">18</div>
+                            <div class="day lightblue">19</div>
+                            <div class="day lightblue">20</div>
+                            <div class="day lightblue">21</div>
+                            <div class="day lightblue">22</div>
+                            <div class="day lightblue">23</div>
+                            <div class="day lightblue">24</div>
+                            <div class="day lightblue">25</div>
+                            <div class="day lightblue">26</div>
+                            <div class="day lightblue">27</div>
+                            <div class="day lightblue">28</div>
+                            <div class="day lightblue">29</div>
+                            <div class="day lightblue">30</div>
+                            <div class="day lightblue">31</div>
+                        </div>
+                    </div>
+
+                    <!-- Vertical Divider -->
+                    <div class="vertical-divider"></div>
+
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <h2>April 2023</h2>
+                        </div>
+                        <div class="calendar-body">
+                            <!-- April days -->
+                            <div class="day day-name">Mon</div>
+                            <div class="day day-name">Tue</div>
+                            <div class="day day-name">Wed</div>
+                            <div class="day day-name">Thu</div>
+                            <div class="day day-name">Fri</div>
+                            <div class="day day-name">Sat</div>
+                            <div class="day day-name">Sun</div>
+                            <!-- Add day cells here -->
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day lightblue">1</div>
+                            <div class="day lightblue">2</div>
+                            <div class="day blue">3</div>
+                            <div class="day">7</div>
+                            <div class="day">8</div>
+                            <div class="day">9</div>
+                            <div class="day">10</div>
+                            <div class="day">11</div>
+                            <div class="day">12</div>
+                            <div class="day">13</div>
+                            <div class="day">14</div>
+                            <div class="day">15</div>
+                            <div class="day">16</div>
+                            <div class="day">17</div>
+                            <div class="day">18</div>
+                            <div class="day">19</div>
+                            <div class="day">20</div>
+                            <div class="day">21</div>
+                            <div class="day">22</div>
+                            <div class="day">23</div>
+                            <div class="day">24</div>
+                            <div class="day">25</div>
+                            <div class="day">26</div>
+                            <div class="day">27</div>
+                            <div class="day">28</div>
+                            <div class="day">29</div>
+                            <div class="day">30</div>
+                            <div class="day">31</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.dropdown-box').forEach(box => {
+            box.addEventListener('click', () => {
+                box.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
