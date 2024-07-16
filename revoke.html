@@ -1,0 +1,78 @@
+<html><head>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .modal {
+    background-color: white;
+    border-radius: 8px;
+    padding: 24px;
+    width: 320px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-size: 18px;
+    color: #202124;
+    margin: 0;
+  }
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #5f6368;
+  }
+  p {
+    color: #5f6368;
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 48%;
+
+  }
+  .cancel {
+    background-color: #f1f3f4;
+    color: #202124;
+    border: 1px solid #dadce0;
+  }
+  .revoke {
+    background-color: #ff7a6a;
+    color: white;
+    border: none;
+  }
+  </style>
+  </head>
+  <body>
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Revoke invite?</h2>
+      <button class="close-button">×</button>
+    </div>
+    <p>Revoking this invite will immediately expire any invitation emails for this invite</p>
+    <div class="button-container">
+      <button class="button cancel">Cancel</button>
+      <button class="button revoke">Revoke</button>
+    </div>
+  </div>
+  </body></html>
