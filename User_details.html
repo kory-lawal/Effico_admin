@@ -294,63 +294,155 @@
             color: blue;
         }
 
-        /* CSS for blurring the background */
         .blur {
-            filter: blur(5px); /* Adjust the blur amount as needed */
-            pointer-events: none; /* Prevent interactions with the blurred content */
+            filter: blur(1px);
+            pointer-events: none; 
         }
 
-        /* CSS for centering the fieldset */
         .centered-fieldset {
-            height: 200px;
-            width: 700px;
+            height: 500px;
+            width: 800px;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 1000; /* Ensure it appears above the blurred content */
-            background-color: white; /* Background color for the fieldset */
-            padding: 20px; /* Padding inside the fieldset */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for the fieldset */
+            z-index: 1000; 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
         }
 
-        /* CSS for the overlay to create a blurred effect */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-            backdrop-filter: blur(5px); /* Blur effect */
-            z-index: 999; /* Ensure it appears above the blurred content but below the fieldset */
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 999; 
         }
 
-        /* Additional styling for the navbar and other elements inside the fieldset */
-        .fieldset-navbar {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
+        .main-navbar {
+            width: 195px;
+            height: 100%;
+            background-color: white;
+            color: black;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid #ccc; 
+            z-index: 10; 
+            border-right: 1px solid #ccc;
         }
 
-        .fieldset-navbar a {
-            color: white;
+        .main-navbar nav ul {
+            list-style-type: none;
+            padding: 0;
+            padding-top: 30px;
+        }
+
+        .main-navbar nav ul li {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .main-navbar nav ul li a {
+            color: black;
             text-decoration: none;
-            margin: 0 10px;
+            padding: 10px;
+            display: block;
         }
 
-        .fieldset-navbar a:hover {
-            text-decoration: underline;
+        .main-navbar nav ul li a:hover,
+        .main-navbar nav ul li a:focus {
+            color: blue;
+        }
+        .main-navbar .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
+        .main-navbar .logo img {
+            max-width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .userheader{
+            text-decoration: none;
+            color: black;
+        }
+        .main-content{
+            flex-grow: 1;
+            padding: 0px 50px;
+            font-size: 14px;
+            margin-left: 170px;
+            margin-top: -22px;
+        }
+        .text{
+            font-size: 22px;
+        }
+        .user-content{
+            flex-grow: 1;
+            padding: 0px 50px;
+            font-size: 14px;
+            margin-left: 170px;
+            margin-top: -22px;
+            width: 600px;
+            border-collapse: collapse;
+            margin-top: px;
+            margin-left: 200px;
+        }
+        .user-content td {
+            height: 60px; /* Adjust height for vertical spacing */
+        }
+        .user-content td {
+            border: 1px solid #b4b2b2;
+            padding: 7px;
+            text-align: justify;
+            border-left: none;
+            border-right: none;
+        }
+        .delete{
+            text-decoration: none;
+            color: red;
+        }
+        
+        .delete-arrow{
+            vertical-align: middle;
+        }
+        .user-profile-header{
+            font-size: 17px;
+            color: #3e3e3e;
+        }
+        
+        .edit{
+            text-decoration: none;
+        }
+        .selected{
+            font-weight: bold;
+        }
+        .camera{
+            flex-grow: 1;
+            padding: 0px 50px;
+            margin-left: 35px;
+            margin-top: 10px;
+        }
+        .x{
+            position: relative;
+            left: 450px;
+        }
+        .UPHD{
+            color: #7a7777;
+        }
     </style>
 </head>
 <body>
     <div class="overlay"></div>
     <div class="container blur">
-        <!-- Your existing content goes here -->
    
     <div class="container">
         <div class="navbar">
@@ -689,18 +781,52 @@
     </div>
     <div class="centered-fieldset">
         <div class="main-navbar">
+            <div class="logo">
+                <img src="userlogo.png" alt="Logo">
+                <a href="#" class="userheader">Jane Doe <br><div class="email-address"> janedoe@effico.app</div></a>
+            </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" class="selected">User Profile</a></li>
+                    <li><a href="#">Token</a></li>
+                    <li><a href="#">Chat History</a></li>
+                    <li><a href="#">Referrals</a></li>
                 </ul>
             </nav>
         </div>
-        <h1>Welcome to My Website</h1>
-        <p>This content is not blurred and is above the blurred background.</p>
-    </div>
+        <div class="main-content">
+            <p class="text">User Profile<img src="Shield-Fail.png" alt="X" class="x"></p>
+            </div>
+            <div>
+                <a href="#" class="camera"><img src="camera.png" alt="Picture" class="camera"></a>
+            </div>
+            <div>
+                <table class="user-content">
+                    <tbody>
+                        <tr>
+                            <td><span class="user-profile-header">Email Address</span> <div class="UPHD">Only an Admin can change user's email address</div></td>
+                            <td>johndoe@icloud.com</td>
+                            <td><a href="#" class="edit">edit</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="user-profile-header">Full Name</span><div class="UPHD">Only an Admin can change user's full name</div></td>
+                            <td>John Doe</td>
+                            <td><a href="#" class="edit">edit</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="user-profile-header">Username</span><div class="UPHD">Only an Admin can change user's username</div></td>
+                            <td>@johndoe</td>
+                            <td><a href="#" class="edit">edit</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="user-profile-header">Account</span><div><a href="#" class="delete">Delete account <img src="Arrow - Right.png" alt="Delete" class="delete-arrow"></a></div></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     <script>
                     document.querySelectorAll(".ellipsis").forEach(ellipsis => {
                 ellipsis.addEventListener("click", function() {
@@ -723,3 +849,4 @@
     </script>
 </body>
 </html>
+

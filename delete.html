@@ -16,16 +16,16 @@
 
         .navbar {
             width: 250px;
-            height: 100vh;
+            height: 100vh; /* Full viewport height */
             background-color: white;
             color: black;
             padding: 20px;
             box-sizing: border-box;
-            position: fixed; 
+            position: fixed; /* Fixes the navbar */
             top: 0;
             left: 0;
-            overflow-y: auto;
-            border-right: 1px solid #ccc;
+            overflow-y: auto; /* Adds scroll inside the navbar if needed */
+            border-right: 1px solid #ccc; /* Navbar line */
         }
 
         .navbar .logo {
@@ -83,7 +83,7 @@
             padding: 12px 16px;
             text-decoration: none;
             display: block;
-            color: #000000;
+            color: black;
         }
 
         .navbar nav ul li .dropdown-content a:hover {
@@ -117,8 +117,8 @@
             width: 20px;
             height: 20px;
             display: inline-block;
-            margin-right: 10px;
-            vertical-align: middle; 
+            margin-right: 10px; /* Adjust margin as needed */
+            vertical-align: middle; /* Aligns the icon with the text */
         }
 
         .email-address{
@@ -293,16 +293,158 @@
         #users-link {
             color: blue;
         }
-        .user-logo{
-            display: inline-block;
-            vertical-align: middle;
+
+        .blur {
+            filter: blur(5px);
+            pointer-events: none; 
+        }
+
+        .centered-fieldset {
+            height: 500px;
+            width: 800px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000; 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(5px); 
+            z-index: 999; 
+        }
+
+        .main-navbar {
+            width: 195px;
+            height: 100%;
+            background-color: white;
+            color: black;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid #ccc; 
+            z-index: 10; 
+            border-right: 1px solid #ccc;
+        }
+
+        .main-navbar nav ul {
+            list-style-type: none;
+            padding: 0;
+            padding-top: 30px;
+        }
+
+        .main-navbar nav ul li {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .main-navbar nav ul li a {
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        .main-navbar nav ul li a:hover,
+        .main-navbar nav ul li a:focus {
+            color: blue;
+        }
+        .main-navbar .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .main-navbar .logo img {
+            max-width: 50px;
+            height: auto;
             margin-right: 10px;
-            height: 30px;
-            width:30px;
+        }
+        .userheader{
+            text-decoration: none;
+            color: black;
+        }
+        .main-content{
+            flex-grow: 1;
+            padding: 0px 50px;
+            font-size: 14px;
+            margin-left: 170px;
+            margin-top: -22px;
+        }
+        .text{
+            font-size: 22px;
+        }
+        .user-content{
+            flex-grow: 1;
+            padding: 0px 50px;
+            font-size: 14px;
+            margin-left: 170px;
+            margin-top: -22px;
+            width: 600px;
+            border-collapse: collapse;
+            margin-top: px;
+            margin-left: 200px;
+        }
+        .user-content td {
+            height: 60px; /* Adjust height for vertical spacing */
+        }
+        .user-content td {
+            border: 1px solid #b4b2b2;
+            padding: 7px;
+            text-align: justify;
+            border-left: none;
+            border-right: none;
+        }
+        .delete{
+            text-decoration: none;
+            color: red;
+        }
+        
+        .delete-arrow{
+            vertical-align: middle;
+        }
+        .user-profile-header{
+            font-size: 17px;
+            color: #3e3e3e;
+        }
+        
+        .edit{
+            text-decoration: none;
+        }
+        .selected{
+            font-weight: bold;
+        }
+        .camera{
+            flex-grow: 1;
+            padding: 0px 50px;
+            margin-left: 35px;
+            margin-top: 10px;
+        }
+        .x{
+            position: relative;
+            left: 450px;
+        }
+        .UPHD{
+            color: #7a7777;
         }
     </style>
 </head>
 <body>
+    <div class="overlay"></div>
+    <div class="container blur">
+   
     <div class="container">
         <div class="navbar">
             <div class="logo">
@@ -371,7 +513,7 @@
                     <!-- Repeat this block 12 times for 12 rows -->
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="Avatar.png" alt="Avatar" class="user-logo">Jane Doe <span>@janedoe11</span></td>
+                        <td>Jane Doe <span>@janedoe11</span></td>
                         <td>jane@efficoai.com</td>
                         <td>Standard</td>
                         <td><fieldset class="active">Active</fieldset></td>
@@ -393,7 +535,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarJS.png" alt="Avatar" class="user-logo">John Smith <span>@jhonsmith01</span></td>
+                        <td>John Smith <span>@jhonsmith01</span></td>
                         <td>jane@efficoai.com</td>
                         <td>Free Trial</td>
                         <td>Today</td>
@@ -415,7 +557,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>Olivia Rhye <span>@livia</span></td>
                         <td>olivia@efficoai.com</td>
                         <td>Pro</td>
                         <td>Yesterday</td>
@@ -437,7 +579,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>Olivia Rhye <span>@livia</span></td>
                         <td>olivia@efficoai.com</td>
                         <td>Pro</td>
                         <td>Yesterday</td>
@@ -459,7 +601,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>Olivia Rhye <span>@livia</span></td>
                         <td>olivia@efficoai.com</td>
                         <td>Pro</td>
                         <td>Yesterday</td>
@@ -481,7 +623,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>Olivia Rhye <span>@livia</span></td>
                         <td>olivia@efficoai.com</td>
                         <td>Pro</td>
                         <td>Yesterday</td>
@@ -503,7 +645,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>Olivia Rhye <span>@livia</span></td>
                         <td>olivia@efficoai.com</td>
                         <td>Pro</td>
                         <td>Yesterday</td>
@@ -525,7 +667,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>Olivia Rhye <span>@livia</span></td>
                         <td>olivia@efficoai.com</td>
                         <td>Pro</td>
                         <td>Yesterday</td>
@@ -547,7 +689,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>Olivia Rhye <span>@livia</span></td>
                         <td>olivia@efficoai.com</td>
                         <td>Pro</td>
                         <td>Yesterday</td>
@@ -569,7 +711,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>Olivia Rhye <span>@livia</span></td>
                         <td>olivia@efficoai.com</td>
                         <td>Pro</td>
                         <td>Yesterday</td>
@@ -591,7 +733,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>Olivia Rhye <span>@livia</span></td>
                         <td>olivia@efficoai.com</td>
                         <td>Pro</td>
                         <td>Yesterday</td>
@@ -613,7 +755,7 @@
                     </tr>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><img src="Profile.png" alt="Avatar"  class="user-logo">Bruce Wayne <span>@bruce293</span></td>
+                        <td>Bruce Wayne <span>@bruce293</span></td>
                         <td>bruce@efficoai.com</td>
                         <td>Basic</td>
                         <td>March 5, 2023</td>
@@ -637,6 +779,55 @@
             </table>
         </div>   
     </div>
+    </div>
+    <div class="centered-fieldset">
+        <div class="main-navbar">
+            <div class="logo">
+                <img src="userlogo.png" alt="Logo">
+                <a href="#" class="userheader">Jane Doe <br><div class="email-address"> janedoe@effico.app</div></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="selected">User Profile</a></li>
+                    <li><a href="#">Token</a></li>
+                    <li><a href="#">Chat History</a></li>
+                    <li><a href="#">Referrals</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main-content">
+            <p class="text">User Profile<img src="Shield-Fail.png" alt="X" class="x"></p>
+            </div>
+            <div>
+                <a href="#" class="camera"><img src="camera.png" alt="Picture" class="camera"></a>
+            </div>
+            <div>
+                <table class="user-content">
+                    <tbody>
+                        <tr>
+                            <td><span class="user-profile-header">Email Address</span> <div class="UPHD">Only an Admin can change user's email address</div></td>
+                            <td>johndoe@icloud.com</td>
+                            <td><a href="#" class="edit">edit</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="user-profile-header">Full Name</span><div class="UPHD">Only an Admin can change user's full name</div></td>
+                            <td>John Doe</td>
+                            <td><a href="#" class="edit">edit</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="user-profile-header">Username</span><div class="UPHD">Only an Admin can change user's username</div></td>
+                            <td>@johndoe</td>
+                            <td><a href="#" class="edit">edit</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="user-profile-header">Account</span><div><a href="#" class="delete">Delete account <img src="Arrow - Right.png" alt="Delete" class="delete-arrow"></a></div></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     <script>
                     document.querySelectorAll(".ellipsis").forEach(ellipsis => {
                 ellipsis.addEventListener("click", function() {
@@ -659,3 +850,4 @@
     </script>
 </body>
 </html>
+
