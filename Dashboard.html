@@ -172,6 +172,109 @@
         color: blue;
         margin-left: px;
         }
+
+        .calendar-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .shared-calendar-container {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 760px;
+            position: relative;
+            right: 100px;
+        }
+
+        .list-container {
+            width: 150px; /* Reduce width of the sidebar */
+            padding: 15px; /* Reduce padding */
+            border-right: 1px solid #ccc; 
+            font-size: 17px;
+        }
+
+        .list {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+        }
+
+        .list li {
+                margin-bottom: 8px; /* Adjust margin */
+        }
+
+        .list a {
+                color: black;
+                text-decoration: none;
+                display: block;
+                padding: 6px 12px; /* Reduce padding */
+        }
+
+        .list a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .calendar {
+            flex: 0;
+            background-color: white;
+        }
+
+        .calendar-header {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0px;
+            padding: 15px;
+        }
+
+        .day {
+            text-align: center;
+            padding: 8px;
+            margin: 0px;
+            border-radius: 0px;
+            cursor: pointer;
+            width: 20px;
+            font-size: 15px;
+            font-weight: lighter;
+        }
+
+        .day-name {
+            font-weight: bold;
+            font-size: 15px;
+            margin-right: px;
+        }
+
+        .day.lightblue {
+            background-color: #d3dcff;
+            color: blue;
+        }
+        .day.blue{
+            background-color: blue;
+            color: white;
+        }
+
+        .vertical-divider {
+            width: .3px;
+            background-color: #b9b7b7;
+            position: absolute;
+            top: px; /* Adjust as needed */
+            bottom: px; /* Adjust as needed */
+            left: 61%;
+            transform: translateX(-50%);
+            height: 100%;
+        }
         .navbar-icon {
             width: 20px;
             height: 20px;
@@ -206,55 +309,9 @@
             color: blue;
         }
 
-        .fieldset-container {
-            border: none;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            width: 100%;
-            max-width: 1000px;
-            margin: 40px auto; /* Center the fieldset horizontally */
-        }
-
-        .fieldset-column {
-            flex: 1;
-            text-align: justify;
-            padding: 10px;
-            position: relative;
-        }
-
-        .fieldset-column:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            right: 0;
-            width: 1px;
-            height: 30%;
-            background-color: #ccc;
-        }
-
-        .fieldset-column p {
-            margin: 0;
-        }
-
-        .arrow{
-            width: 16px;
-            margin-bottom: -3px;
-            
-        }
-
-        .highlight{
-            color: rgb(35, 160, 148);
-        }
-
-        .size{
-            font-size: 40px;
-        }
         .graph{
             width: 800px;
-            margin: 20px;
+            margin: px;
         }
     </style>
 </head>
@@ -313,7 +370,8 @@
         </div>
         <div class="content">
             <header>
-                <h1>Dashboard</h1>
+                <h1>Welcome Jane,</h1>
+                <p>Thursday, May 25</p>
             </header>
             <div class="dropdown-box-container">
                 <div class="dropdown-box" id="box1">
@@ -332,42 +390,136 @@
                     </fieldset>
                     <div class="dropdown-content">
                         <a href="#">Weekly</a>
+                        <a href="#">Monthly</a>
+                        <a href="#">Yearly</a>
                     </div>
                 </div>
             </div>
-            <fieldset class="fieldset-container">
-                <div class="fieldset-column">
-                    <p>Total users</p>
-                    <p class="size">120</p>
-                    <p><img src="Arrow - Up.png" alt="arrow" class="arrow"><span class="highlight">22%</span> vs last month</p>
-                    
+            <div class="calendar-container">
+                <div class="shared-calendar-container">
+                    <div class="list-container">
+                        <ul class="list">
+                            <li><a href="#">Today</a></li>
+                            <li><a href="#">Last 7 days</a></li>
+                            <li><a href="#">Last 14 days</a></li>
+                            <li><a href="#">Last 30 days</a></li>
+                            <li><a href="#">Last 12 months</a></li>
+                            <li><a href="#">Month to date</a></li>
+                            <li><a href="#">Quarter to date</a></li>
+                            <li><a href="#">Year to date</a></li>
+                            <li><a href="#">All time</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="vertical-divid"></div>
+
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <h2>March 2023</h2>
+                        </div>
+                        <div class="calendar-body">
+                            <!-- March days -->
+                            <div class="day day-name">Mon</div>
+                            <div class="day day-name">Tue</div>
+                            <div class="day day-name">Wed</div>
+                            <div class="day day-name">Thu</div>
+                            <div class="day day-name">Fri</div>
+                            <div class="day day-name">Sat</div>
+                            <div class="day day-name">Sun</div>
+                            <!-- Add day cells here -->
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day">1</div>
+                            <div class="day">2</div>
+                            <div class="day">3</div>
+                            <div class="day blue">4</div>
+                            <div class="day lightblue">5</div>
+                            <div class="day lightblue">6</div>
+                            <div class="day lightblue">7</div>
+                            <div class="day lightblue">8</div>
+                            <div class="day lightblue">9</div>
+                            <div class="day lightblue">10</div>
+                            <div class="day lightblue">11</div>
+                            <div class="day lightblue">12</div>
+                            <div class="day lightblue">13</div>
+                            <div class="day lightblue">14</div>
+                            <div class="day lightblue">15</div>
+                            <div class="day lightblue">16</div>
+                            <div class="day lightblue">17</div>
+                            <div class="day lightblue">18</div>
+                            <div class="day lightblue">19</div>
+                            <div class="day lightblue">20</div>
+                            <div class="day lightblue">21</div>
+                            <div class="day lightblue">22</div>
+                            <div class="day lightblue">23</div>
+                            <div class="day lightblue">24</div>
+                            <div class="day lightblue">25</div>
+                            <div class="day lightblue">26</div>
+                            <div class="day lightblue">27</div>
+                            <div class="day lightblue">28</div>
+                            <div class="day lightblue">29</div>
+                            <div class="day lightblue">30</div>
+                            <div class="day lightblue">31</div>
+                        </div>
+                    </div>
+
+                    <!-- Vertical Divider -->
+                    <div class="vertical-divider"></div>
+
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <h2>April 2023</h2>
+                        </div>
+                        <div class="calendar-body">
+                            <!-- April days -->
+                            <div class="day day-name">Mon</div>
+                            <div class="day day-name">Tue</div>
+                            <div class="day day-name">Wed</div>
+                            <div class="day day-name">Thu</div>
+                            <div class="day day-name">Fri</div>
+                            <div class="day day-name">Sat</div>
+                            <div class="day day-name">Sun</div>
+                            <!-- Add day cells here -->
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day"></div>
+                            <div class="day lightblue">1</div>
+                            <div class="day lightblue">2</div>
+                            <div class="day blue">3</div>
+                            <div class="day">7</div>
+                            <div class="day">8</div>
+                            <div class="day">9</div>
+                            <div class="day">10</div>
+                            <div class="day">11</div>
+                            <div class="day">12</div>
+                            <div class="day">13</div>
+                            <div class="day">14</div>
+                            <div class="day">15</div>
+                            <div class="day">16</div>
+                            <div class="day">17</div>
+                            <div class="day">18</div>
+                            <div class="day">19</div>
+                            <div class="day">20</div>
+                            <div class="day">21</div>
+                            <div class="day">22</div>
+                            <div class="day">23</div>
+                            <div class="day">24</div>
+                            <div class="day">25</div>
+                            <div class="day">26</div>
+                            <div class="day">27</div>
+                            <div class="day">28</div>
+                            <div class="day">29</div>
+                            <div class="day">30</div>
+                            <div class="day">31</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="fieldset-column">
-                    <p>New users</p>
-                    <p class="size">40</p>
-                    <p><img src="Arrow - Up.png" alt="arrow" class="arrow"><span class="highlight">12%</span> vs last month</p>
-                </div>
-                <div class="fieldset-column">
-                    <p>Active users</p>
-                    <p class="size">64</p>
-                    <p><img src="Arrow - Up.png" alt="arrow" class="arrow"><span class="highlight">9%</span> vs last month</p>
-                </div>
-                <div class="fieldset-column">
-                    <p>Active users</p>
-                    <p class="size">40</p>
-                    <p><img src="Arrow - Up.png" alt="arrow" class="arrow"><span class="highlight">12%</span> vs last month</p>
-                </div>
-            </fieldset>
-            <fieldset class="fieldset-container">
-                <div class="fieldset-column">
-                    <p>Revenue</p>
-                    <p class="size">₦120, 000</p>
-                    <p><img src="Arrow - Up.png" alt="arrow" class="arrow"><span class="highlight">22%</span> vs last month</p>
-                </div>
-                
-            </fieldset>
-            <img src="graph1.png" alt="Graph" class="graph">
             </div>
+            <img src="graph2.png" alt="Graph" class="graph">
+        </div>
+        
     </div>
     <script>
         document.querySelectorAll('.dropdown-box').forEach(box => {
