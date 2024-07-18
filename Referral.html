@@ -153,15 +153,29 @@
         }
         .active{
             width: 50px;
-            height: 4.1px;
-            border-radius: 40px;
+            height: 5px;
+            border-radius: 10px;
             justify-content: center;
             align-items: center;
-            border: 1px solid #ccc;
+            border: 1px solid rgb(223, 255, 255);
             display: flex;
             margin: 0;
             padding: 10px;
-            color: aquamarine;
+            color: rgb(0, 169, 113);
+            background-color: rgb(223, 255, 255);
+        }
+        .pending{
+            width: 50px;
+            height: 5px;
+            border-radius: 40px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(249, 211, 211);
+            display: flex;
+            margin: 0;
+            padding: 10px;
+            color: rgb(224, 59, 59);
+            background-color: rgb(249, 211, 211);
         }
         .fieldset-table {
             width: 800px;
@@ -304,8 +318,8 @@
             height: 500px;
             width: 800px;
             position: fixed;
-            top: 300px;
-            left: 640px;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1000; 
             background-color: white; 
@@ -398,7 +412,7 @@
             margin-left: 200px;
         }
         .user-content td {
-            height: 60px; /* Adjust height for vertical spacing */
+            height: 60px;
         }
         .user-content td {
             border: 1px solid #b4b2b2;
@@ -439,59 +453,179 @@
         .UPHD{
             color: #7a7777;
         }
-        .delete-fieldset{
-            height: 400px;
-            width: 400px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000; 
-            background-color: white; 
-            padding: 20px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .ailogo{
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;    
         }
-        .delete-icon{
-            margin-left: 150px;
+        .basic-plan{
+            margin-top: 60px;
+            font-size: 17px;
         }
-        .centralised{
-            text-align: center;
+        .renew{
+            margin-left: 20px;
         }
-        .DTA{
-            width: 370px;
-            height: 60px;
+        .renew-date{
+            font-weight: bold;
+        }
+        .token{
+            margin-left: 20px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+        }
+        .may{
+            margin-left: 335px;
+        }
+        .righta{
+            vertical-align: middle;
+        }
+        .lefta{
+            vertical-align: middle;
+        }
+        .token-money{
+            vertical-align: middle;
+        }
+        .add-token{
+            width: 75px;
+            height: 20px;
+            font-size: 10px;
+            background-color: blue;
             border-radius: 10px;
             border: 1px solid blue;
-            font-size: 20px;
-        }
-        .cancel-button{
-            margin-left: 378px;
-        }
-        .cancel{
-            width: 180px;
-            height: 45px;
-            margin-left: -270px;
-            margin-top: 10px;
-            border-radius: 10px;
-            border: 1px solid grey;
-        }
-        .confirm{
-            width: 180px;
-            height: 45px;
-            margin-right: -270px;
-            margin-top: 10px;
-            border-radius: 10px;
             color: white;
-            background-color: rgb(237, 132, 132);
-            border: 1px solid rgb(237, 132, 132);
+            vertical-align: middle;
+            display: flex;
+            margin-left: 450px;
+            margin-top: -4px;
+        }
+        .usage{
+            font-size: 20px;
+            margin-top: 50px;
+        }
+        .graph-token{
+            width: 550px;
+            height: 230px;
+        }
+        .token-bal{
+            margin-top: -px;
+        }
+        .sms-logo{
+            vertical-align: middle;
+            margin-left: -15px;
+            margin-right: 1px;
+        }
+        .chat-history{
+            color: #abaaaa;
+        }
+        .referral-fieldset{
+            width: 350px;
+            height: 85px;
+            border-radius: 10px;
+            box-shadow: #3e3e3e;
+            font-size: 17px;
+            border: 1px solid rgb(163, 162, 162);
+        }
+        .referral-input{
+            width: 200px;
+            height: 30px;
+            margin-top: 28px;
+            border-radius: 7px;
+            border: none;
+            background-color: #eae8e8;
+        }
+        .input-link{
+            position: absolute;
+            top: 24%;
+            left: 51%;
+            font-size: 15px;
+        }
+        .deactivate{
+            text-decoration: none;
+            color: rgb(243, 124, 124);
+            vertical-align: middle;
+        }
+        .trash{
+            margin-right: 5px;
+        }
+    
+        .fieldset-container {
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 630px;
+            max-width: 800px;
+            margin-top: -10px;
+            margin-left: -40px;
+        }
+
+        .fieldset-column {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+        }
+
+        .fieldset-column:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 0;
+            width: 1px;
+            height: 30%;
+            background-color: #ccc;
+        }
+        .user-logo{
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+            height: 30px;
+            width:30px;
+        }
+
+        .fieldset-column p {
+            margin: 0;
+        }
+        .size{
+            font-size: 17px;
+        }
+        .fieldset-head{
+            font-size: 14px;
+            color: #8c8c8c;
+        }
+        .earnings{
+            margin-top: 40px;
+            font-size: 20px;
+            margin-left: -10px;
+            font-weight: lighter;
+        }
+        .invite{
+            width: 600px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: -7px;
+        }
+        .invite th, .invite td{
+            border: 1px solid #b4b2b2;
+            padding: 7px;
+            text-align: justify;
+            border-left: none;
+            border-right: none;
+        }
+        .invite th{
+            height: 30px;
+        }
+        .invite td{
+            height: 30px;
+        }
+        .invite th :nth-last-child(4), .invite td :nth-child(4){
+            width: 80px;
         }
     </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container blur">
-
     <div class="overlay"></div>
     <div class="container blur">
    
@@ -838,61 +972,70 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#" class="selected">User Profile</a></li>
+                    <li><a href="#">User Profile</a></li>
                     <li><a href="#">Token</a></li>
                     <li><a href="#">Chat History</a></li>
-                    <li><a href="#">Referrals</a></li>
+                    <li><a href="#" class="selected">Referrals</a></li>
                 </ul>
             </nav>
         </div>
         <div class="main-content">
-            <p class="text">User Profile<img src="Shield-Fail.png" alt="X" class="x"></p>
-            </div>
-            <div>
-                <a href="#" class="camera"><img src="camera.png" alt="Picture" class="camera"></a>
-            </div>
-            <div>
-                <table class="user-content">
-                    <tbody>
-                        <tr>
-                            <td><span class="user-profile-header">Email Address</span> <div class="UPHD">Only an Admin can change user's email address</div></td>
-                            <td>johndoe@icloud.com</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                        </tr>
-                        <tr>
-                            <td><span class="user-profile-header">Full Name</span><div class="UPHD">Only an Admin can change user's full name</div></td>
-                            <td>John Doe</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                        </tr>
-                        <tr>
-                            <td><span class="user-profile-header">Username</span><div class="UPHD">Only an Admin can change user's username</div></td>
-                            <td>@johndoe</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                        </tr>
-                        <tr>
-                            <td><span class="user-profile-header">Account</span><div><a href="#" class="delete">Delete account <img src="Arrow - Right.png" alt="Delete" class="delete-arrow"></a></div></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="delete-fieldset">
-        <img src="Info Circle.png" alt="Cancel" class="cancel-button">
-        <div>
-            <a href="#"><img src="delete.png" alt="Delete" class="delete-icon"></a>
-            
-            <div class="centralised"><p>Delete Account?</p> <br>
-                <span>Are you sure you want to delete your account? You cannot undo this once you go ahead.</span>
-                <p>To confirm, please type 'delete this account' below</p>
-                <span><input type="text" placeholder="Delete this Account" class="DTA"></span>
-                <div>
-                    <button class="cancel">Cancel</button> <button class="confirm">Delete Account</button>
+            <p class="text">Referrals<img src="Shield-Fail.png" alt="X" class="x"></p>
+            <fieldset class="referral-fieldset">
+                <span>Referral code</span>
+                <div><input type="text" placeholder="E F 8 3 7 3" class="referral-input"><a href="#" class="input-link">edit</a>
+                    <a href="#" class="deactivate"><img src="trash.png" alt="Trash" class="trash">Deactivate doe</a></div>
+            </fieldset>
+            <p class="earnings">Referral Earnings</p>
+            <fieldset class="fieldset-container">
+                <div class="fieldset-column">
+                    <p class="fieldset-head">Total Earnings</p>
+                    <p class="size">300 credits</p>
+                    
                 </div>
-            </div>
+                <div class="fieldset-column">
+                    <p class="fieldset-head">Total referrals</p>
+                    <p class="size">5</p>
+                </div>
+                <div class="fieldset-column">
+                    <p class="fieldset-head">Paid out</p>
+                    <p class="size">3</p>
+                </div>
+                <div class="fieldset-column">
+                    <p class="fieldset-head">Total credits paid</p>
+                    <p class="size">300</p>
+                </div>
+                <div class="fieldset-column">
+                    <p class="fieldset-head">Pending</p>
+                    <p class="size">200</p>
+                </div>
+            </fieldset>
+            <table class="invite">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Referral payout</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="Avatar.png" alt="Avatar" class="user-logo">Jane Doe <span>@janedoe11</span></td>
+                        <td>jane@efficoai.com</td>
+                        <td><fieldset class="active">Paid</fieldset></td>
+                        <td>100 Credits Paid</td>
+                    </tr>
+                    <tr>
+                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@olivia</span></td>
+                        <td>olivia@efficoai.com</td>
+                        <td><fieldset class="pending">Active</fieldset></td>
+                        <td> - </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        
     </div>
     <script>
                     document.querySelectorAll(".ellipsis").forEach(ellipsis => {
