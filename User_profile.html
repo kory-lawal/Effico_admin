@@ -304,8 +304,8 @@
             height: 500px;
             width: 800px;
             position: fixed;
-            top: 300px;
-            left: 640px;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1000; 
             background-color: white; 
@@ -439,59 +439,9 @@
         .UPHD{
             color: #7a7777;
         }
-        .delete-fieldset{
-            height: 400px;
-            width: 400px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000; 
-            background-color: white; 
-            padding: 20px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .delete-icon{
-            margin-left: 150px;
-        }
-        .centralised{
-            text-align: center;
-        }
-        .DTA{
-            width: 370px;
-            height: 60px;
-            border-radius: 10px;
-            border: 1px solid blue;
-            font-size: 20px;
-        }
-        .cancel-button{
-            margin-left: 378px;
-        }
-        .cancel{
-            width: 180px;
-            height: 45px;
-            margin-left: -270px;
-            margin-top: 10px;
-            border-radius: 10px;
-            border: 1px solid grey;
-        }
-        .confirm{
-            width: 180px;
-            height: 45px;
-            margin-right: -270px;
-            margin-top: 10px;
-            border-radius: 10px;
-            color: white;
-            background-color: rgb(237, 132, 132);
-            border: 1px solid rgb(237, 132, 132);
-        }
     </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container blur">
-
     <div class="overlay"></div>
     <div class="container blur">
    
@@ -878,22 +828,6 @@
                 </table>
             </div>
         </div>
-    </div>
-    <div class="delete-fieldset">
-        <img src="Info Circle.png" alt="Cancel" class="cancel-button">
-        <div>
-            <a href="#"><img src="delete.png" alt="Delete" class="delete-icon"></a>
-            
-            <div class="centralised"><p>Delete Account?</p> <br>
-                <span>Are you sure you want to delete your account? You cannot undo this once you go ahead.</span>
-                <p>To confirm, please type 'delete this account' below</p>
-                <span><input type="text" placeholder="Delete this Account" class="DTA"></span>
-                <div>
-                    <button class="cancel">Cancel</button> <button class="confirm">Delete Account</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script>
                     document.querySelectorAll(".ellipsis").forEach(ellipsis => {
                 ellipsis.addEventListener("click", function() {

@@ -304,8 +304,8 @@
             height: 500px;
             width: 800px;
             position: fixed;
-            top: 300px;
-            left: 640px;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1000; 
             background-color: white; 
@@ -398,7 +398,7 @@
             margin-left: 200px;
         }
         .user-content td {
-            height: 60px; /* Adjust height for vertical spacing */
+            height: 60px;
         }
         .user-content td {
             border: 1px solid #b4b2b2;
@@ -439,59 +439,75 @@
         .UPHD{
             color: #7a7777;
         }
-        .delete-fieldset{
-            height: 400px;
-            width: 400px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000; 
-            background-color: white; 
-            padding: 20px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .ailogo{
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;    
         }
-        .delete-icon{
-            margin-left: 150px;
+        .basic-plan{
+            margin-top: 60px;
+            font-size: 17px;
         }
-        .centralised{
-            text-align: center;
+        .renew{
+            margin-left: 20px;
         }
-        .DTA{
-            width: 370px;
-            height: 60px;
+        .renew-date{
+            font-weight: bold;
+        }
+        .token{
+            margin-left: 20px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+        }
+        .may{
+            margin-left: 335px;
+        }
+        .righta{
+            vertical-align: middle;
+        }
+        .lefta{
+            vertical-align: middle;
+        }
+        .token-money{
+            vertical-align: middle;
+        }
+        .add-token{
+            width: 75px;
+            height: 20px;
+            font-size: 10px;
+            background-color: blue;
             border-radius: 10px;
             border: 1px solid blue;
-            font-size: 20px;
-        }
-        .cancel-button{
-            margin-left: 378px;
-        }
-        .cancel{
-            width: 180px;
-            height: 45px;
-            margin-left: -270px;
-            margin-top: 10px;
-            border-radius: 10px;
-            border: 1px solid grey;
-        }
-        .confirm{
-            width: 180px;
-            height: 45px;
-            margin-right: -270px;
-            margin-top: 10px;
-            border-radius: 10px;
             color: white;
-            background-color: rgb(237, 132, 132);
-            border: 1px solid rgb(237, 132, 132);
+            vertical-align: middle;
+            display: flex;
+            margin-left: 450px;
+            margin-top: -4px;
+        }
+        .usage{
+            font-size: 20px;
+            margin-top: 50px;
+        }
+        .graph-token{
+            width: 550px;
+            height: 230px;
+        }
+        .token-bal{
+            margin-top: -px;
+        }
+        .sms-logo{
+            vertical-align: middle;
+            margin-left: -15px;
+            margin-right: px;
+
+
+        }
+        .chat-history{
+            color: #abaaaa;
         }
     </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container blur">
-
     <div class="overlay"></div>
     <div class="container blur">
    
@@ -838,60 +854,39 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#" class="selected">User Profile</a></li>
+                    <li><a href="#">User Profile</a></li>
                     <li><a href="#">Token</a></li>
-                    <li><a href="#">Chat History</a></li>
+                    <li><a href="#" class="selected">Chat History</a></li>
                     <li><a href="#">Referrals</a></li>
                 </ul>
             </nav>
         </div>
         <div class="main-content">
-            <p class="text">User Profile<img src="Shield-Fail.png" alt="X" class="x"></p>
-            </div>
-            <div>
-                <a href="#" class="camera"><img src="camera.png" alt="Picture" class="camera"></a>
-            </div>
-            <div>
-                <table class="user-content">
-                    <tbody>
-                        <tr>
-                            <td><span class="user-profile-header">Email Address</span> <div class="UPHD">Only an Admin can change user's email address</div></td>
-                            <td>johndoe@icloud.com</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                        </tr>
-                        <tr>
-                            <td><span class="user-profile-header">Full Name</span><div class="UPHD">Only an Admin can change user's full name</div></td>
-                            <td>John Doe</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                        </tr>
-                        <tr>
-                            <td><span class="user-profile-header">Username</span><div class="UPHD">Only an Admin can change user's username</div></td>
-                            <td>@johndoe</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                        </tr>
-                        <tr>
-                            <td><span class="user-profile-header">Account</span><div><a href="#" class="delete">Delete account <img src="Arrow - Right.png" alt="Delete" class="delete-arrow"></a></div></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="delete-fieldset">
-        <img src="Info Circle.png" alt="Cancel" class="cancel-button">
-        <div>
-            <a href="#"><img src="delete.png" alt="Delete" class="delete-icon"></a>
-            
-            <div class="centralised"><p>Delete Account?</p> <br>
-                <span>Are you sure you want to delete your account? You cannot undo this once you go ahead.</span>
-                <p>To confirm, please type 'delete this account' below</p>
-                <span><input type="text" placeholder="Delete this Account" class="DTA"></span>
-                <div>
-                    <button class="cancel">Cancel</button> <button class="confirm">Delete Account</button>
-                </div>
-            </div>
+            <p class="text">Chat History<img src="Shield-Fail.png" alt="X" class="x"></p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><span class="chat-history">just now</span><br><p><img src="sms-tracking.png" alt="SMS" class="sms-logo">Explain quantum computing in simple terms</p>
+                            <p><img src="sms-tracking.png" alt="SMS" class="sms-logo">Performance and Reliability: The app runs smoothly and rarely crashes or freezes</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="chat-history">Yesterday</span><br><p><img src="sms-tracking.png" alt="SMS" class="sms-logo">Explain quantum computing in simple terms</p>
+                            <p><img src="sms-tracking.png" alt="SMS" class="sms-logo">Performance and Reliability: The app runs smoothly and rarely crashes or freezes</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="chat-history">Previous 30 days</span><br><p><img src="sms-tracking.png" alt="SMS" class="sms-logo">Regular updates and bug fixes are appreciated, ensuring the app remains reliable and up-to-date.</p>
+                            <p><img src="sms-tracking.png" alt="SMS" class="sms-logo">Performance and Reliability: The app runs smoothly and rarely crashes or freezes</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="chat-history">April</span><br><p><img src="sms-tracking.png" alt="SMS" class="sms-logo">Explain quantum computing in simple terms</p>
+                            <p><img src="sms-tracking.png" alt="SMS" class="sms-logo">Performance and Reliability: The app runs smoothly and rarely crashes or freezes</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <script>

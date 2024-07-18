@@ -440,7 +440,7 @@
             color: #7a7777;
         }
         .delete-fieldset{
-            height: 400px;
+            height: 250px;
             width: 400px;
             position: fixed;
             top: 50%;
@@ -457,6 +457,7 @@
         }
         .centralised{
             text-align: center;
+            margin-top: 20px;
         }
         .DTA{
             width: 370px;
@@ -483,8 +484,38 @@
             margin-top: 10px;
             border-radius: 10px;
             color: white;
-            background-color: rgb(237, 132, 132);
-            border: 1px solid rgb(237, 132, 132);
+            background-color: rgb(97, 86, 253);
+            border: 1px solid rgb(97, 86, 253);
+        }
+        .edit-header{
+            font-size: 20px;
+        }
+        .change{
+            font-size: 5;
+            margin-top: -15px;
+            color: #7a7777;
+        }
+        .username{
+            width: 340px;
+            height: 40px;
+            border: none;
+            margin-top: 50px;
+            margin-left: 15px;
+            background-color: #e7e4e4;
+            border-radius: 10px;
+        }
+        .user-name{
+           font-size: 14px;
+        }
+        .space{
+            margin-top: 5px;
+            border: none;
+            width: 200px;
+            height: 20px;
+            background-color:#e7e4e4;
+        }
+        .user-header{
+            margin-top: -40px;
         }
     </style>
 </head>
@@ -882,14 +913,20 @@
     <div class="delete-fieldset">
         <img src="Info Circle.png" alt="Cancel" class="cancel-button">
         <div>
-            <a href="#"><img src="delete.png" alt="Delete" class="delete-icon"></a>
+            <div class="user-header">
+                <p class="edit-header">Edit Email Address</p>
+                <p class="change">Make changes to user's email address</p>
+            </div>
+            <div>
+                <fieldset class="username">
+                    <div class="user-name">Email Address</div>
+                    <input type="text" placeholder="johndoe@gmail.com" class="space">
+                </fieldset>
+            </div>
             
-            <div class="centralised"><p>Delete Account?</p> <br>
-                <span>Are you sure you want to delete your account? You cannot undo this once you go ahead.</span>
-                <p>To confirm, please type 'delete this account' below</p>
-                <span><input type="text" placeholder="Delete this Account" class="DTA"></span>
+            <div class="centralised">
                 <div>
-                    <button class="cancel">Cancel</button> <button class="confirm">Delete Account</button>
+                    <button class="cancel">Cancel</button> <button class="confirm">Update</button>
                 </div>
             </div>
         </div>
