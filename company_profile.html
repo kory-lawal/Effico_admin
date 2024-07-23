@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Effico.co</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            height: 100%;
+            background-color: #f8f9fa;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(15, 15, 15, 0.1);
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        hr {
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        .logo img {
+            width: 45px;
+            height: 45px;
+        }
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .ai-color {
+            background: linear-gradient(42.09deg, #3F5DC0 4.59%, #6A87EA 94.52%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .menu-item {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        .icon_menu {
+            margin-right: 5px;
+        }
+        .menu-item:hover {
+            background-color: #f3f4f6;
+        }
+        .submenu {
+            display: none;
+            margin-left: 20px;
+        }
+        .active {
+            font-weight: 600;
+            color: #4f46e5;
+            background-color: #ede9fe;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+        p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+        th {
+            text-align: left;
+            padding: 10px;
+            color: #6b7280;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        td {
+            background-color: #f9fafb;
+            padding: 16px 10px;
+        }
+        tr td:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        tr td:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .dropdown {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: #374151;
+            font-size: 14px;
+        }
+        .action-link {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .user-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-panel span {
+            margin-left: 8px;
+            font-weight: 500;
+        }
+    
+  
+        h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: #202124;
+        }
+        .subtitle {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .profile-section {
+            margin-bottom: 30px;
+            margin-top: -15px;
+        }
+        .profile-section h2 {
+            font-size: 16px;
+            margin-bottom: -10px;
+            color: #202124;
+        }
+        .profile-section p {
+            color: #5f6368;
+            font-size: 14px;
+            /* margin-bottom: 10px; */
+        }
+
+        .logo-preview img {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px; 
+            margin-bottom: -30px;
+           display: flex;
+           
+        }
+         input[type="email"], input[type="password"] {
+            width: 412px;
+            height: 24PX;
+            padding: 10px;
+            margin-top: -10px;
+            border: 1px solid rgba(76, 111, 230, 1);
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        input[type="email"] {
+            background-color:  #eeebeb;
+        }
+        input[type="password"] {
+            background-color:  #eeebeb;
+        }
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 30px;
+        }
+        .lettermark {
+            width: 160px;
+            height: 40px;
+        }
+        .lettermark2{
+            margin-bottom: 50px;
+        }
+        a {
+            text-decoration: none;
+            color: rgba(107, 114, 128, 1);
+
+        }
+        .tab-icon {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .tab-icon {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="logo" onclick="toggleMobileMenu()">
+                <img src="Effico-logo.png" alt="TIME-OUT">
+                <span>effico<b class="ai-color">ai</b></span>
+            </div>
+            <div class="menu-item">
+                <img src="home.png" alt="Home icon" class="icon_menu"> 
+                <span>Dashboard</span>
+            </div>
+            <div class="menu-item">
+                <img src="chart-.png" alt="Analytics icon" class="icon_menu">           
+                <span>Analytics</span>
+            </div>
+            <div class="menu-item">
+                <img src="3 User.png" alt="Users icon" class="icon_menu"> 
+                <span>Users</span>
+            </div>
+            <div class="menu-item active" onclick="toggleSubmenu()">
+                <img src="setting.png" alt="Settings icon" class="icon_menu"> 
+                <span>Settings</span>
+            </div>
+            <div class="submenu" id="settings-submenu">
+                <div class="menu-item">Company</div>
+                <div class="menu-item active">Company Profile</div>
+                <div class="menu-item"><a href="integrations.html">Integrations</a></div>
+                <div class="menu-item"><a href="team_members.html">Team members</a></div>
+                <div class="menu-item"><a href="roles.html">Roles</a></div>
+            </div>
+            <div class="menu-item">My profile</div>
+            <div class="menu-item">Notifications</div>
+            <div class="menu-item">Security</div>
+        </div>
+        
+        <div class="main-content">
+            <h1>Company Profile</h1>
+            <div class="subtitle">Manage the look of the effico profile.</div>
+            <hr>
+            <div class="profile-section">
+                <div class="logo-preview">
+                    <img src="Effico-logo.png" alt="Effico.ai large logo">
+                </div>
+                <h2>Company Logo</h2>
+                <p>Choose the company's logo. Recommended size is 250 x 250.</p>   
+            </div>
+            
+            <div class="profile-section">
+              <img class="lettermark" src="Frame 61361.png" alt="Effico.ai lettermark">
+              <div class="lettermark2">
+                <h2>Letter mark</h2>
+                <p>Choose the company's logo. Recommended size is 180 x 40.</p>
+              </div>  
+            </div>
+            
+            <div class="profile-section">
+                <h2>Contact email</h2>
+                <p>Enter the contact email where users can contact you for support</p>
+                <input type="email" placeholder="helloeffico@gmail.com" required>
+            </div>
+            
+            <button>Update</button>
+          </div> 
+    </div>
+    <div class="user-panel">  
+        <img src="Avatar1.png" alt="Jane Doe" class="avatar" style="width: 32px; height: 32px;">
+        <span>Jane Doe</span> 
+    </div>
+    <button class="tab-icon" onclick="toggleMobileMenu()">☰</button>
+
+    <script>
+        function toggleSubmenu() {
+            var submenu = document.getElementById("settings-submenu");
+            if (submenu.style.display === "none" || submenu.style.display === "") {
+                submenu.style.display = "block";
+            } else {
+                submenu.style.display = "none";
+            } 
+        }
+
+        function toggleMobileMenu() {
+            var sidebar = document.getElementById("sidebar");
+            var tabIcon = document.querySelector(".tab-icon");
+            if (sidebar.style.display === "none" || sidebar.style.display === "") {
+                sidebar.style.display = "block";
+                tabIcon.style.display = "none";
+            } else {
+                sidebar.style.display = "none";
+                tabIcon.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

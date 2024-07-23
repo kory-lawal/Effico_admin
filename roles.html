@@ -1,0 +1,355 @@
+<html><head>
+    <title>effico.co</title>
+    <style>
+     body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            height: 100%;
+            background-color: #f8f9fa;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(15, 15, 15, 0.1);
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        hr {
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        .logo img {
+            width: 45px;
+            height: 45px;
+        }
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .ai-color {
+            background: linear-gradient(42.09deg, #3F5DC0 4.59%, #6A87EA 94.52%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .menu-item {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        .icon_menu {
+            margin-right: 5px;
+        }
+        .menu-item:hover {
+            background-color: #f3f4f6;
+        }
+        .submenu {
+            display: none;
+            margin-left: 20px;
+        }
+        .active {
+            font-weight: 600;
+            color: #4f46e5;
+            background-color: #ede9fe;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+        p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+          .subtitle {
+            color: #5f6368;
+            font-size: 14px;
+            margin-top: -15px;
+          }
+    .create-button {
+        background-color: #1a73e8;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        float: right;
+    }
+    .header{
+        margin-top: -20px;
+    }
+    .roles-count {
+        color: #5f6368;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+    .role-card {
+        background-color: white;
+        border: 1px solid #dadce0;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+    .role-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+    .role-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        margin-right: 12px;
+    }
+    .role-name {
+        font-size: 16px;
+        font-weight: 500;
+        color: #202124;
+    }
+    .role-tag {
+        font-size: 12px;
+        color: #5f6368;
+        background-color: #f1f3f4;
+        padding: 2px 8px;
+        border-radius: 12px;
+        margin-left: 8px;
+    }
+    .role-description {
+        font-size: 14px;
+        color: #5f6368;
+        margin-bottom: 16px;
+        line-height: 20px;
+    }
+    .role-button {
+        background-color: white;
+        color: #1967d2;
+        border: 1px solid #dadce0;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+          .integration-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 16px;
+          }
+          .integration-card {
+            
+              background-color: white;
+              border: 1px solid #dadce0;
+              border-radius: 8px;
+              padding: 16px;
+              
+          }
+          .integration-logo {
+              width: 40px;
+              height: 40px;
+              margin-bottom: 16px;
+          }
+          .integration-logos {
+              margin-bottom: 16px;
+          }
+          .integration-name {
+              font-size: 16px;
+              font-weight: 500;
+              color: #202124;
+              margin-bottom: 4px;
+          }
+          .integration-description {
+              font-size: 14px;
+              color: #5f6368;
+              margin-bottom: 16px;
+              line-height: 20px;
+          }
+          .integration-button {
+              background-color: rgb(235, 234, 234);
+              color: rgba(76, 111, 230, 1);
+              border: 1px solid #dadce0;
+              padding: 8px 16px;
+              border-radius: 10px;
+              cursor: pointer;
+              font-size: 14px;
+              font-weight: 500;
+          }
+         
+        .user-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-panel span {
+            margin-left: 8px;
+            font-weight: 500;
+        }
+    
+        a {
+            text-decoration: none;
+            color: rgba(107, 114, 128, 1);
+
+        }
+        .tab-icon {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .tab-icon {
+                display: block;
+            }
+        }
+
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="sidebar" id="sidebar">
+                <div class="logo" onclick="toggleMobileMenu()">
+                    <img src="Effico-logo.png" alt="TIME-OUT">
+                    <span>effico<b class="ai-color">ai</b></span>
+                </div>
+                <div class="menu-item">
+                    <img src="home.png" alt="Home icon" class="icon_menu"> 
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item">
+                    <img src="chart-.png" alt="Analytics icon" class="icon_menu">           
+                    <span>Analytics</span>
+                </div>
+                <div class="menu-item">
+                    <img src="3 User.png" alt="Users icon" class="icon_menu"> 
+                    <span>Users</span>
+                </div>
+                <div class="menu-item active" onclick="toggleSubmenu()">
+                    <img src="setting.png" alt="Settings icon" class="icon_menu"> 
+                    <span>Settings</span>
+                </div>
+                <div class="submenu" id="settings-submenu">
+                    <div class="menu-item">Company</div>
+                    <div class="menu-item"><a href="company_profile.html">Company Profile</a></div>
+                    <div class="menu-item"><a href="integrations.html">Integrations</a></div>
+                    <div class="menu-item"><a href="team_members.html">Team members</a></div>
+                    <div class="menu-item active" >Roles</div>
+                </div>
+                <div class="menu-item">My profile</div>
+                <div class="menu-item">Notifications</div>
+                <div class="menu-item">Security</div>
+            </div>
+        <div class="main-content">
+            <div class="header">
+                <h1>Roles</h1>
+                <div class="subtitle">Manage roles and permissions of the admin dashboard</div>
+            </div>
+            <hr>
+            <button class="create-button">+ Create custom role</button>
+            <div class="roles-count">Roles (4)</div>
+            <br>
+            <div class="integration-grid">
+                <div class="integration-card">
+                    <img class="integration-logo" src="icon131.png" alt="Stripe logo"> 
+                    <div class="integration-name">Owner (you)</div>
+                    <div class="integration-description">This role has full access to all the features and permissions of the admin workspace and can change company profile and security.</div>
+                    <button class="integration-button">See permissions</button>
+                </div>
+                
+                <div class="integration-card">
+                    <img class="integration-logos" src="icon132.png" alt="Slack logo">
+                    <div class="integration-name">Admin</div>
+                    <div class="integration-description">This role has full access to all the analytics and can manage users features including creating new users, assigning tokens, inviting new members etc.</div>
+                    <button class="integration-button">See permissions</button>
+                </div>
+                
+                <div class="integration-card">
+                    <img class="integration-logos" src="icon133.png" alt="Zapier logo">
+                    <div class="integration-name">Moderator</div>
+                    <div class="integration-description">This role has full access to the content management. Can publish new articles, delete or edit current articles in the dashboard.</div>
+                    <button class="integration-button">See permissions</button>
+                </div>
+                
+                <div class="integration-card">
+                    <img class="integration-logos" src="icon134.png" alt="Zapier logo">
+                    <div class="integration-name">Read-only</div>
+                    <div class="integration-description">This role has read-only access to the users statistics and analytics. Can also read users activities and chat history.</div>
+                    <button class="integration-button">See permissions</button>.
+                </div>
+            </div>
+            
+        </div>
+        <div class="user-panel">  
+            <img src="Avatar1.png" alt="Jane Doe" class="avatar">
+            <span>Jane Doe</span> 
+        </div>
+        <button class="tab-icon" onclick="toggleMobileMenu()">☰</button>
+    
+        <script>
+            function toggleSubmenu() {
+                var submenu = document.getElementById("settings-submenu");
+                if (submenu.style.display === "none" || submenu.style.display === "") {
+                    submenu.style.display = "block";
+                } else {
+                    submenu.style.display = "none";
+                }
+            }
+            function toggleMobileMenu() {
+                var sidebar = document.getElementById("sidebar");
+                if (sidebar.style.display === "none" || sidebar.style.display === "") {
+                    sidebar.style.display = "block";
+                } else {
+                    sidebar.style.display = "none";
+                }
+            }
+        </script>
+    </div>
+    </body></html>

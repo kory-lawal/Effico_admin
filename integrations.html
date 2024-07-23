@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Effico.co</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            height: 100%;
+            background-color: #f8f9fa;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(15, 15, 15, 0.1);
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        hr {
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        .logo img {
+            width: 45px;
+            height: 45px;
+        }
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .ai-color {
+            background: linear-gradient(42.09deg, #3F5DC0 4.59%, #6A87EA 94.52%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .menu-item {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        .icon_menu {
+            margin-right: 5px;
+        }
+        .menu-item:hover {
+            background-color: #f3f4f6;
+        }
+        .submenu {
+            display: none;
+            margin-left: 20px;
+        }
+        .active {
+            font-weight: 600;
+            color: #4f46e5;
+            background-color: #ede9fe;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+        p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+          .subtitle {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 24px;
+          }
+          .integration-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 16px;
+          }
+          .integration-card {
+              background-color: white;
+              border: 1px solid #dadce0;
+              border-radius: 8px;
+              padding: 16px;
+          }
+          .integration-logo {
+              width: 40px;
+              height: 40px;
+              margin-bottom: 16px;
+          }
+          .integration-name {
+              font-size: 16px;
+              font-weight: 500;
+              color: #202124;
+              margin-bottom: 4px;
+          }
+          .integration-description {
+              font-size: 14px;
+              color: #5f6368;
+              margin-bottom: 16px;
+              line-height: 20px;
+          }
+          .integration-button {
+              background-color: rgb(235, 234, 234);
+              color: black;
+              border: 1px solid #dadce0;
+              padding: 8px 16px;
+              border-radius: 10px;
+              cursor: pointer;
+              font-size: 14px;
+              font-weight: 500;
+          }
+          .connected {
+            display: flex;
+            justify-content: space-between;
+          }
+          .connected_btn{
+            height: 18px;
+            width: 78px;
+            border-radius: 12px;
+            border: 0.5px solid rgba(35, 160, 148, 1);
+            background: transparent;
+            color:rgba(35, 160, 148, 1);
+          }
+          .connected_btn2{
+            height: 20px;
+            width: 77px;
+            border:none;
+            background: transparent;
+          }
+        .user-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-panel span {
+            margin-left: 8px;
+            font-weight: 500;
+        }
+    
+        a {
+            text-decoration: none;
+            color: rgba(107, 114, 128, 1);
+
+        }
+        .tab-icon {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .tab-icon {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="logo" onclick="toggleMobileMenu()">
+                <img src="Effico-logo.png" alt="TIME-OUT">
+                <span>effico<b class="ai-color">ai</b></span>
+            </div>
+            <div class="menu-item">
+                <img src="home.png" alt="Home icon" class="icon_menu"> 
+                <span>Dashboard</span>
+            </div>
+            <div class="menu-item">
+                <img src="chart-.png" alt="Analytics icon" class="icon_menu">           
+                <span>Analytics</span>
+            </div>
+            <div class="menu-item">
+                <img src="3 User.png" alt="Users icon" class="icon_menu"> 
+                <span>Users</span>
+            </div>
+            <div class="menu-item active" onclick="toggleSubmenu()">
+                <img src="setting.png" alt="Settings icon" class="icon_menu"> 
+                <span>Settings</span>
+            </div>
+            <div class="submenu" id="settings-submenu">
+                <div class="menu-item">Company</div>
+                <div class="menu-item"><a href="company_profile.html">Company Profile</a></div>
+                <div class="menu-item active">Integrations</div>
+                <div class="menu-item"><a href="team_members.html">Team members</a></div>
+                <div class="menu-item"><a href="roles.html">Roles</a></div>
+            </div>
+            <div class="menu-item">My profile</div>
+            <div class="menu-item">Notifications</div>
+            <div class="menu-item">Security</div>
+        </div>
+        
+        <div class="main-content">
+          <h1>Integrations</h1>
+          <div class="subtitle">Manage and configure any third-party services and APIs that you use</div>
+          <hr>
+          <div class="integration-grid">
+              <div class="integration-card">
+                <div class="connected">
+                  <img class="integration-logo" src="icon122.png" alt="Stripe logo"> 
+                  <button class="connected_btn">connected </button>
+                </div>
+                  <div class="integration-name">Stripe</div>
+                  <div class="integration-description">Seamlessly integrate payment into your product to accept any payment type. Securely integrate payment into your product to accept any payment.</div>
+                  <button class="integration-button">Settings</button>
+              </div>
+              
+              <div class="integration-card">
+                <div class="connected">
+                  <img class="integration-logo" src="icon123.png" alt="Slack logo">
+                  <button class="connected_btn2">+ connect</button>
+                </div>
+                  <div class="integration-name">Slack</div>
+                  <div class="integration-description">Receive notifications for team activity directly in your Slack channels. Receive notifications for team activity directly in your Slack channels.</div>
+                  <button class="integration-button">Settings</button>
+              </div>
+              
+              <div class="integration-card">
+                <div class="connected">
+                  <img class="integration-logo" src="icon124 Fill.png" alt="Zapier logo">
+                  <button class="connected_btn2">+ connect</button>
+                </div>
+                  <div class="integration-name">Zapier</div>
+                  <div class="integration-description">This integration lets you build custom automations to create or update Livesit issues when certain pre-defined triggers occur in other apps or services.</div>
+                  <button class="integration-button">Settings</button>
+              </div>
+              
+              <div class="integration-card">
+                <div class="connected">
+                  <img class="integration-logo" src="icon124 Fill.png" alt="Zapier logo">
+                  <button class="connected_btn2">+ connect</button>
+                </div>
+                  <div class="integration-name">Jira</div>
+                  <div class="integration-description">Keep your work moving in Jira Cloud, with effico.ai to bring all your work into one place for easy reporting and tracking.</div>
+                  <button class="integration-button">Settings</button>
+              </div>
+              
+              <div class="integration-card">
+                <div class="connected">
+                  <img class="integration-logo" src="icon126.png" alt="GitHub logo">
+                  <button class="connected_btn">connected</button>
+                </div>
+                  <div class="integration-name">Github</div>
+                  <div class="integration-description">Sync all your GitHub projects, view pull requests and monitor activity on your GitHUb projects.</div>
+                  <button class="integration-button">Settings</button>
+              </div>
+              
+              <div class="integration-card">
+                <div class="connected">
+                  <img class="integration-logo" src="icon127.png  " alt="OpenAI logo">
+                  <button class="connected_btn">connected</button>
+                </div>
+                  <div class="integration-name">Open AI</div>
+                  <div class="integration-description">Power your app with AI and automatically handle the fuss with this new GPT-4 api for full AI model integration.</div>
+                  <button class="integration-button">Settings</button>
+              </div>
+          </div>
+    </div>
+    <div class="user-panel">  
+        <img src="Avatar1.png" alt="Jane Doe" class="avatar">
+        <span>Jane Doe</span> 
+    </div>
+    <button class="tab-icon" onclick="toggleMobileMenu()">☰</button>
+
+    <script>
+        function toggleSubmenu() {
+            var submenu = document.getElementById("settings-submenu");
+            if (submenu.style.display === "none" || submenu.style.display === "") {
+                submenu.style.display = "block";
+            } else {
+                submenu.style.display = "none";
+            }
+        }
+        function toggleMobileMenu() {
+            var sidebar = document.getElementById("sidebar");
+            if (sidebar.style.display === "none" || sidebar.style.display === "") {
+                sidebar.style.display = "block";
+            } else {
+                sidebar.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
