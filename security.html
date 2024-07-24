@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Effico.co</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            height: 100%;
+            background-color: #f8f9fa;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        hr {
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        .logo img {
+            width: 45px;
+            height: 45px;
+        }
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .ai-color {
+            background: linear-gradient(42.09deg, #3F5DC0 4.59%, #6A87EA 94.52%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .menu-item {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        .icon_menu {
+            margin-right: 5px;
+        }
+        .menu-item:hover {
+            background-color: #f3f4f6;
+        }
+        .submenu {
+            display: none;
+            margin-left: 20px;
+        }
+        .active {
+            font-weight: 600;
+            color: #4f46e5;
+            background-color: #ede9fe;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+        p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        .subtitle {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+          .notification-section {
+              margin-bottom: 24px;
+          }
+          .notification-title {
+              font-size: 16px;
+              font-weight: 500;
+              color: #202124;
+              margin-bottom: 8px;
+          }
+          .notification-description {
+              font-size: 14px;
+              color: #5f6368;
+              margin-bottom: 16px;
+          }
+          .separate{
+            display: flex;
+            justify-content: space-between;
+          }
+          a{
+            text-decoration: none;
+            color: rgba(107, 114, 128, 1);;
+          }
+        .user-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-panel span {
+            margin-left: 8px;
+            font-weight: 500;
+        }
+        .integration-button {
+              background-color: rgb(235, 234, 234);
+              color: black;
+              border: 1px solid #dadce0;
+              padding: 8px 16px;
+              border-radius: 10px;
+              cursor: pointer;
+              font-size: 14px;
+              font-weight: 500;
+              color: rgba(76, 111, 230, 1);
+              margin-right: 60px;
+          }
+          /* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.modal-content h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modal-content button {
+    background-color: #4f46e5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.modal-content .cancel {
+    background-color: #ccc;
+    margin-left: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+        .tab-icon {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .tab-icon {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="logo" onclick="toggleMobileMenu()">
+                <img src="Effico-logo.png" alt="TIME-OUT">
+                <span>effico<b class="ai-color">ai</b></span>
+            </div>
+            <div class="menu-item">
+                <img src="home.png" alt="Home icon" class="icon_menu"> 
+                <span>Dashboard</span>
+            </div>
+            <div class="menu-item">
+                <img src="chart-.png" alt="Analytics icon" class="icon_menu">           
+                <span>Analytics</span>
+            </div>
+            <div class="menu-item">
+                <img src="3 User.png" alt="Users icon" class="icon_menu"> 
+                <span>Users</span>
+            </div>
+            <div class="menu-item" onclick="toggleSubmenu()">
+                <img src="setting.png" alt="Settings icon" class="icon_menu"> 
+                <span>Settings</span>
+            </div>
+            <div class="submenu" id="settings-submenu">
+                <div class="menu-item">Company</div>
+                <div class="menu-item"><a href="company_profile.html">Company Profile</a></div>
+                <div class="menu-item"><a href="integrations.html">Integrations</a></div>
+                <div class="menu-item"><a href="team_members.html">Team members</a></div>
+                <div class="menu-item"><a href="roles.html">Roles</a></div>
+            </div>
+            <div class="menu-item">My profile</div>
+            <div class="menu-item"><a href="notification.html">Notifications</a></div>
+            <div class="menu-item active">Security</div>
+        </div>
+        <div class="main-content">
+          <h1>Security</h1>
+          <div class="subtitle">Secure your Admin dashboard account</div>
+          <hr>
+          <div class="separate">
+            <div class="notification-section">
+                <div class="notification-title">Password *</div>
+                <div class="notification-description">Enable/disable push notifications in-app</div>
+            </div>
+            <!-- Backup Code Generation Button -->
+            <label class="toggle-switch">
+              <button class="integration-button backup">Generate Codes</button>
+            </label>
+           </div>
+          <hr>
+          <div class="separate">
+            <div class="notification-section">
+                <div class="notification-title">Generate new backup codes</div>
+                <div class="notification-description">Generate and save new backup codes to use in case you lose access to your authentication app.</div>
+
+            </div>
+            <label class="toggle-switch">
+              <button class="integration-button">Generate Codes</button>
+          </label>
+          </div>  
+          <hr>
+          <div class="separate">
+            <div class="notification-section">
+                <div class="notification-title">2-Factor Authentication</div>
+                <div class="notification-description">Reset or change the authentication app.</div>
+
+            </div>
+            <label class="toggle-switch">
+              <button class="integration-button">Reset Authentication app</button>
+          </label>
+          </div> 
+          <hr> 
+    </div>
+    <div class="user-panel">  
+        <img src="Avatar1.png" alt="Jane Doe" class="avatar" style="width: 32px; height: 32px;">
+        <span>Jane Doe</span> 
+    </div>
+    <!-- Password Change Modal -->
+    <div id="passwordModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Change password</h2>
+          <form>
+              <label for="currentPassword">Current Password*</label>
+              <input type="password" id="currentPassword" name="currentPassword" required>
+              
+              <label for="newPassword">New Password*</label>
+              <input type="password" id="newPassword" name="newPassword" required>
+              
+              <label for="confirmNewPassword">Confirm New Password*</label>
+              <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+              
+              <button type="submit">Save Changes</button>
+              <button type="button" class="cancel">Cancel</button>
+          </form>
+      </div>
+    </div>
+       
+
+
+    <button class="tab-icon" onclick="toggleMobileMenu()">☰</button>
+    
+    <script>
+        function toggleSubmenu() {
+            var submenu = document.getElementById("settings-submenu");
+            if (submenu.style.display === "none" || submenu.style.display === "") {
+                submenu.style.display = "block";
+            } else {
+                submenu.style.display = "none";
+            } 
+        }
+
+        function toggleMobileMenu() {
+            var sidebar = document.getElementById("sidebar");
+            var tabIcon = document.querySelector(".tab-icon");
+            if (sidebar.style.display === "none" || sidebar.style.display === "") {
+                sidebar.style.display = "block";
+                tabIcon.style.display = "none";
+            } else {
+                sidebar.style.display = "none";
+                tabIcon.style.display = "block";
+            }
+        }
+    </script>
+    <script>
+      // Get modal element
+      var modal = document.getElementById("passwordModal");
+  
+      // Get open modal button
+      var btn = document.querySelector(".integration-button");
+  
+      // Get close button
+      var span = document.getElementsByClassName("close")[0];
+  
+      // Open modal
+      btn.onclick = function() {
+          modal.style.display = "block";
+      }
+  
+      // Close modal
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+  
+      // Close modal when clicking outside of it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+  
+      // Cancel button
+      document.querySelector(".cancel").onclick = function() {
+          modal.style.display = "none";
+      }
+  </script>
+  
+</body>
+</html>
