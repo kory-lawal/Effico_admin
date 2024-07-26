@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .navbar {
+            width: 250px;
+            height: 100vh;
+            background-color: white;
+            color: black;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed; 
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            border-right: 1px solid #ccc;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: -20px;
+        }
+
+        .navbar .logo img {
+            max-width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            margin: 0;
+            font-size: 1.3em;
+            margin-left: -15px;
+        }
+
+        .navbar nav ul {
+            list-style-type: none;
+            padding: 0;
+            padding-top: 30px;
+        }
+
+        .navbar nav ul li {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .navbar nav ul li a {
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        .navbar nav ul li a:hover,
+        .navbar nav ul li a:focus {
+            color: blue;
+        }
+
+        .navbar nav ul li .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .navbar nav ul li .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+
+        .navbar nav ul li .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 0px 50px;
+            font-size: 14px;
+            margin-left: 250px;
+        }
+
+        .content header p {
+            font-size: 14px;
+            margin-top: -15px;
+        }
+
+
+        .logocolor {
+            color: blue;
+        }
+
+        .date {
+            height: 45px;
+            width: 240px;
+            border-radius: 10px;
+        }
+
+        .navbar-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle; 
+        }
+
+        .email-address{
+            font-size: small;
+            color: gray;
+        }
+        .navbar nav ul li:last-child {
+            position: absolute;
+            bottom: 2px; /* Adjust to position at the bottom */
+            left: 60px;
+            width: 100%; /* Full width of the navbar */
+        }
+        .email-logo{
+            width: 15px;
+            height: 19px;
+            margin-bottom: -48px;
+            margin-left: -35px;
+            border: 1px solid blue;
+            border-radius: 10px;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10px;
+            display: flex;
+            background-color: rgb(240, 210, 255);
+            font-size: 14px;
+            color: blue;
+        }
+
+        .h1{
+            color: rgb(152, 150, 150);
+        }
+        .active{
+            width: 50px;
+            height: 4.1px;
+            border-radius: 40px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            display: flex;
+            margin: 0;
+            padding: 10px;
+            color: aquamarine;
+        }
+        .expired{
+            width: 50px;
+            height: 4.1px;
+            border-radius: 40px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ff6767;
+            display: flex;
+            margin: 0;
+            padding: 10px;
+            color: #ff6767;
+        }
+        .fieldset-table {
+            width: 500px;
+            height: 250px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .fieldset-table th, .fieldset-table td {
+            border: 1px solid #b4b2b2;
+            padding: 7px;
+            text-align: justify;
+            border-left: none;
+            border-right: none;
+        }
+
+        .dot {
+            height: 3px; 
+            width: 3px; 
+            background-color: black; 
+            border-radius: 50%;
+            margin: 2px 0; 
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+        }
+        
+        .UC{
+            position: relative;
+            margin-top: -15px;
+            margin-left: 29px;
+        }
+        .UCO{
+            position: relative;
+            margin-top: -15px;
+            margin-left: 29px;
+            font-weight: bold;
+        }
+
+        #users-link {
+            color: blue;
+        }
+        .user-logo{
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+            height: 30px;
+            width:30px;
+        }
+        .dropdown-box-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .dropdown-box {
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .dropdown-box fieldset {
+            height: 30px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            padding: 0 10px;
+            margin: 0;
+        }
+
+        .dropdown-box fieldset p {
+            color: black;
+            margin: 0;
+            pointer-events: none; /* Prevent text selection */
+        }
+
+        .dropdown-box .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%; /* Position below the dropdown box */
+            left: 0;
+            background-color: #f9f9f9;
+            min-width: 100%; /* Adjust to fit the box */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-box .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+
+        .dropdown-box .dropdown-content a:hover {
+            background-color: #ffffff;
+        }
+
+        .dropdown-box.active .dropdown-content {
+            display: block;
+        }
+        .fieldset-container {
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            max-width: 1000px;
+            margin-left: -30px;
+            margin-top: 40px;
+        }
+
+        .fieldset-column p {
+            margin: 0;
+        }
+        .fieldset-column {
+            flex: 1;
+            text-align: justify;
+            padding: 10px;
+            position: relative;
+        }
+        .fieldset-column:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 0;
+            width: 1px;
+            height: 30%;
+            background-color: #ccc;
+        }
+        .arrow{
+            width: 16px;
+            margin-bottom: -3px;     
+        }
+        .size{
+            font-size: 40px;
+        }
+        .highlight{
+            color: rgb(35, 160, 148);
+        }
+        .cre{
+            font-size: 12px;
+            font-weight: lighter;
+            margin-left: 20px;
+        }
+        .highlightr{
+            color: crimson;
+        }
+        .all{
+            font-size: 20px;
+        }
+        .sub-logo{
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .chart-details{
+            position: relative;
+            top: -280px;
+            left: 350px;
+        }
+        .fieldset-table2 {
+            width: 800px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .fieldset-table2 th, .fieldset-table2 td {
+            border: 1px solid #b4b2b2;
+            padding: 7px;
+            text-align: justify;
+            border-left: none;
+            border-right: none;
+        }
+
+        .fieldset-table2 th {
+            height: 40px;
+        }
+
+        .fieldset-table2 td {
+            height: 40px; /* Adjust height for vertical spacing */
+        }
+
+        .fieldset-table2 th:nth-child(4), .fieldset-table2 td:nth-child(4){
+            width: 80px;
+        }
+        .the-table{
+            margin-top: -200px;
+        }
+        #search-bar {
+            width: 30%;
+            height: 45px;
+            padding: 10px;
+            margin-bottom: -100px;
+            margin-top: 30px;
+            box-sizing: border-box;
+            font-size: 16px;
+            border: none; /* Increase the border width */
+        }
+        .export{
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: middle; 
+            margin-right: 10px;
+        }
+        .subscrib{
+            font-size: 16px;
+            margin-left: 270px;
+        }
+        .EF{
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            color: inherit;
+            margin-left: 20px;
+        }
+        .expire{
+            color: #ff6767;
+        }
+        .prev{
+            width: 65px;
+            height: 25px;
+            background-color: white;
+            color: blue;
+            border-radius: 10px;
+            border-color: blue;
+            position: relative;
+            right: -600px;
+        }
+        .next{
+            position: relative;
+            top: -43px;
+            right: -700px;
+            width: 65px;
+            height: 25px;
+            background-color: blue;
+            color: white;
+            border-radius: 10px;
+            border-color: blue;
+        }
+        .edit{
+            position: relative;
+            top: -8px;
+            right: -6px;
+        }
+        .editp{
+            position: relative;
+            top: -7px;
+        }
+        .n{
+            vertical-align: middle;
+        }
+        .page{
+            position: relative;
+            top: 20px;
+        }
+        .bottom{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="Effico-logo.png" alt="Logo">
+                <h1>effico<a class="logocolor">ai</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">
+                        <img src="homen.png" alt="Home" class="navbar-icon">Dashboard
+                    </a></li>
+                    <li class="dropdown">
+                        <a href="#" id="users-link">
+                            <img src="chart-2n.png" alt="Analytics" class="navbar-icon">Analytics &#9662;</a>
+                        <div class="dropdown-content">
+                            <a href="#">Sub-item 1</a>
+                            <a href="#">Sub-item 2</a>
+                        </div>
+                    </li>
+                    <li><a href="#" class="UC">Overview</a></li>
+                    <li><a href="#" class="UC">Affiliates</a></li>
+                    <li><a href="#" class="UCO">Subscription</a></li>
+                    <li><a href="#" class="UC">Tokens</a></li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <img src="3 Usern.png" alt="User" class="navbar-icon">Users &#9662;
+                        </a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">
+                            <img src="setting.png" alt="Setting" class="navbar-icon">Settings &#9662;</a>
+                        <div class="dropdown-content">
+                            <a href="#">Sub-item 1</a>
+                            <a href="#">Sub-item 2</a>
+                        </div>
+                        <li>
+                            <div class="email">
+                                <fieldset class="email-logo">J</fieldset><a href="#">Jane Doe <br><div class="email-address"> janedoe@effico.app</div></a>
+                            </div>
+                        </li>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <header>
+                <h1>Subscriptions</h1>
+                <p class="h1">Your subscribers dashboard</p>
+            </header>
+            <div class="dropdown-box-container">
+                <div class="dropdown-box" id="box1">
+                    <fieldset>
+                        <p>April 30, 2023 - May 29, 2023</p> &#9662;
+                    </fieldset>
+                    <div class="dropdown-content">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="dropdown-box" id="box2">
+                    <fieldset>
+                        <p>Daily</p>&#9662;
+                    </fieldset>
+                    <div class="dropdown-content">
+                        <a href="#">Weekly</a>
+                    </div>
+                </div>
+            </div>
+            <fieldset class="fieldset-container">
+                <div class="fieldset-column">
+                    <p>Total Subscribers</p>
+                    <p class="size">3,000</p>
+                    <p><img src="Arrow - Up.png" alt="arrow" class="arrow"><span class="highlight">22%</span> vs last month</p>
+                    
+                </div>
+                <div class="fieldset-column">
+                    <p>New subscribers</p>
+                    <p class="size">200</p>
+                    <p><img src="Arrow - Up.png" alt="arrow" class="arrow"><span class="highlight">12%</span> vs last month</p>
+                </div>
+                <div class="fieldset-column">
+                    <p>Total Revenue</p>
+                    <p class="size">600,000<span class="cre">NGN</span></p>
+                    <p><img src="Arrow - Up.png" alt="arrow" class="arrow"><span class="highlight">12%</span> vs last month</p>
+                </div>
+                <div class="fieldset-column">
+                    <p>Renewal Subscribers</p>
+                    <p class="size">120</p>
+                    <p><img src="Arrow - Up.png" alt="arrow" class="arrow"><span class="highlight">12%</span> vs last month</p>
+                </div>
+                <div class="fieldset-column">
+                    <p>Canceled Subscription</p>
+                    <p class="size">8</p>
+                    <p><img src="red arrow.png" alt="arrow" class="arrow"><span class="highlightr">8%</span> vs last month</p>
+                </div>
+            </fieldset>
+            <div>
+                <div>
+                    <p class="all">All Subscriptions</p>
+                    <img src="Subscrib.png" alt="Chart">
+                </div>
+                <div class="chart-details">
+                    <table class="fieldset-table">
+                        <thead>
+                            <tr>
+                                <th>Subscribtion</th>
+                                <th>No.of Subscribers</th>
+                                <th>Percentage</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                
+                                <td><img src="free.png" alt="Bullet" class="sub-logo">Free trial</td>
+                                <td>540</td>
+                                <td>32.98 %</td>
+                                <td>0</td>
+                                
+                            </tr>
+                            <tr>
+                                <td><img src="basic.png" alt="Bullet" class="sub-logo">Basic</td>
+                                <td>568</td>
+                                <td>35.21 %</td>
+                                <td>125, 000 NGN</td>
+                            </tr>
+                            <tr>
+                                <td><img src="pro.png" alt="Bullet" class="sub-logo">Pro</td>
+                                <td>345</td>
+                                <td>11.45 %</td>
+                                <td>100, 000 NGN</td>
+                            </tr>
+                            <tr>
+                                <td><img src="standard.png" alt="Bullet" class="sub-logo">Standard</td>
+                                <td>292</td>
+                                <td>9.80 %</td>
+                                <td>80, 000 NGN</td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="the-table">
+                    <img src="search-normal.png" alt="Search" class="search"><input type="text" id="search-bar" placeholder="Search members by name....">
+                    <span class="subscrib">Status: Active &#9662;</span>
+                    <span><a href="#" class="EF"><img src="Upload.png" alt="Upload" class="export">Export</a></span>
+            
+                    <table class="fieldset-table2">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subscription</th>
+                        <th>Status</th>
+                        <th>Expire when</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Repeat this block 12 times for 12 rows -->
+                    <tr>
+                        <td>1</td>
+                        <td><img src="Avatar.png" alt="Avatar" class="user-logo">Jane Doe <span>@janedoe11</span></td>
+                        <td>jane@efficoai.com</td>
+                        <td>Standard</td>
+                        <td><fieldset class="active">Active</fieldset></td>
+                        <td>June 06, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><img src="AvatarJS.png" alt="Avatar" class="user-logo">John Smith <span>@jhonsmith01</span></td>
+                        <td>jane@efficoai.com</td>
+                        <td>Pro</td>
+                        <td><fieldset class="active">Active</fieldset></td>
+                        <td>June 01, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>olivia@efficoai.com</td>
+                        <td>Basic</td>
+                        <td><fieldset class="active">Active</fieldset></td>
+                        <td>June 22, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>olivia@efficoai.com</td>
+                        <td>Standard</td>
+                        <td><fieldset class="active">Active</fieldset></td>
+                        <td>June 06, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>olivia@efficoai.com</td>
+                        <td>Standard</td>
+                        <td><fieldset class="expired">expired</fieldset></td>
+                        <td class="expire">May 24, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>olivia@efficoai.com</td>
+                        <td>Pro</td>
+                        <td><fieldset class="active">Active</fieldset></td>
+                        <td>June 15, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>olivia@efficoai.com</td>
+                        <td>Basic</td>
+                        <td><fieldset class="expired">expired</fieldset></td>
+                        <td class="expire">May 28, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>olivia@efficoai.com</td>
+                        <td>Basic</td>
+                        <td><fieldset class="active">Active</fieldset></td>
+                        <td>June 23,2023</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>olivia@efficoai.com</td>
+                        <td>Standard</td>
+                        <td><fieldset class="active">Active</fieldset></td>
+                        <td>June 15, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><img src="AvatarOR.png" alt="Avatar" class="user-logo">Olivia Rhye <span>@livia</span></td>
+                        <td>olivia@efficoai.com</td>
+                        <td>Basic</td>
+                        <td><fieldset class="active">Active</fieldset></td>
+                        <td>June 06, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><img src="Profile.png" alt="Avatar"  class="user-logo">Bruce Wayne <span>@bruce293</span></td>
+                        <td>bruce@efficoai.com</td>
+                        <td>Basic</td>
+                        <td><fieldset class="expired">expired</fieldset></td>
+                        <td class="expire">May 24,2023</td>
+                    </tr>
+                </tbody>
+                    </table>
+                    <div class="bottom">
+                        <span class="page">Page 1 0f 20</span><fieldset class="prev"> <p class="editp"><img src="blueleftarrow.png" alt="" class="n"> Prev</p></fieldset>
+                        <fieldset class="next"><p class="edit">Next <img src="whiterightarrow.png" alt=""></p> </fieldset>
+                    </div>
+            </div>
+        </div>   
+    </div> 
+</body>
+</html>
