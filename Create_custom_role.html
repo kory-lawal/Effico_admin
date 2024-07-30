@@ -1,0 +1,233 @@
+<html><head>    
+  <title>effico</title>
+  <style>
+  body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+  }
+  .container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+  }
+  .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+  .title {
+      font-size: 22px;
+      color: #202124;
+  }
+  .close-button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #5f6368;
+      cursor: pointer;
+  }
+  .form-group {
+      margin-bottom: 20px;
+  }
+  .form-group label {
+      display: block;
+      font-size: 14px;
+      color: #5f6368;
+      margin-bottom: 5px;
+  }
+  .form-group input[type="text"] {
+      width: 452px;
+      height: 48px;
+      padding: 8px;
+      background-color:  #f0f0f0;
+      border: 1px solid  #f0f0f0;
+      border-radius: 4px;
+      font-size: 14px;
+  }
+  .permissions-group {
+      margin-bottom: 20px;
+  }
+  .permissions-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #202124;
+      margin-bottom: 10px;
+  }
+  .permission-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+  }
+  .permission-item input[type="checkbox"] {
+      margin-right: 10px;
+  }
+  .permission-item label {
+      font-size: 14px;
+      color: #202124;
+  }
+  .footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+  }
+  .button {
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      height: 51px;
+  }
+  .cancel-button {
+    width: 160px;
+      background-color: #fff;
+      color: #1a73e8;
+      border: 1px solid #dadce0;
+      margin-right: 8px;
+  }
+  .save-button {
+      width: 276px;
+      background-color: #1a73e8;
+      color: #fff;
+      border: none;
+  }
+
+  </style>
+  </head>
+  <body>
+  <div class="container">
+      <div class="header">
+          <div class="title">Create custom role</div>
+          <button class="close-button">×</button>
+      </div>
+      <p class="text">Define and assign the permissions and access for team members<br> with this  You can make changes to this much later.</p>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" value="Owner">
+        <p>Give the role a short and clear Name.</p>
+    </div>
+    <div class="form-group">
+      <label for="description">description</label>
+      <input type="text" id="name" value=""> 
+    </div>
+      <div class="permissions-group">
+          <div class="permissions-title">Team Management Permissions</div>
+          <div class="permission-item">
+              <input type="checkbox" id="invite-team-members">
+              <label for="invite-team-members">Can invite new team members </label> 
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-team-members">
+              <label for="remove-existing-team">Can remove existing team members</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-team-members">
+              <label for="change-team-member's">Can change team member's role</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-team-members">
+              <label for="create-custom-roles">Can create custom roles</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-team-members">
+              <label for="edit-custom-roles">Can edit custom roles</label>
+          </div>
+      </div>
+      <div class="permissions-group">
+          <div class="permissions-title">User Management Permissions</div>
+          <div class="permission-item">
+              <input type="checkbox" id="create-users">
+              <label for="create-users">Can create users</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-users">
+              <label for="edit-users">Can edit users</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-users">
+              <label for="delete-users">Can delete users</label>
+          </div>
+      </div>
+      <div class="permissions-group">
+          <div class="permissions-title">Team Management</div>
+          <div class="permission-item">
+              <input type="checkbox" id="create-teams">
+              <label for="create-teams">Can create teams</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-teams">
+              <label for="delete-existing-user">Can delete existing user from the database</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-teams">
+              <label for="read-existing-user’s">Can read existing user’s info and analytics</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-teams">
+              <label for="edit-existing-user’s">Can edit existing user’s info</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-teams">
+              <label for="give-user-additional">Can give user additional tokens</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-teams">
+              <label for="change-user’s-subscription">Can change user’s subscription plan</label>
+          </div>
+      </div>
+      <div class="permissions-group">
+          <div class="permissions-title">Settings permissions</div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-company-info">
+              <label for="view-company-info">Can view company info</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-billing-settings">
+              <label for="edit-edit-company’s">Can edit company’s info</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="cancel-subscription">
+              <label for="remove-integrations">Can connect and remove integrations</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="view-api-key">
+              <label for="view-api-key">Can view API key</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="view-api-key">
+              <label for="generate-new-api-key">Can generate new API keys</label>
+          </div>
+      </div>
+      <div class="permissions-group">
+          <div class="permissions-title">Content Management Permissions</div>
+          <div class="permission-item">
+              <input type="checkbox" id="create-content">
+              <label for="read-existing-resources">Can read existing resources and articlest</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-content">
+              <label for="create-new-resources">Can create new resources and articles</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-content">
+              <label for="create-new-resources">Can create new resources and articles</label>
+          </div>
+      </div>
+      <div class="permissions-group">
+          <div class="permissions-title">Analytics Permissions</div>
+          <div class="permission-item">
+              <input type="checkbox" id="view-analytics">
+              <label for="view-analytics">Can view analytics</label>
+          </div>
+      </div>
+      <div class="footer">
+          <button class="button cancel-button">Cancel</button>
+          <button class="button save-button">Save and continue</button>
+      </div>
+  </div>
+  </body></html>

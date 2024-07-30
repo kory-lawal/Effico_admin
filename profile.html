@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Effico.co</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            height: 100%;
+            background-color: #f8f9fa;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 240px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(15, 15, 15, 0.1);
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        hr {
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        .logo img {
+            width: 45px;
+            height: 45px;
+        }
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .ai-color {
+            background: linear-gradient(42.09deg, #3F5DC0 4.59%, #6A87EA 94.52%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .menu-item {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        .icon_menu {
+            margin-right: 5px;
+        }
+        .menu-item:hover {
+            background-color: #f3f4f6;
+        }
+        .submenu {
+            display: none;
+            margin-left: 20px;
+        }
+        .active {
+            font-weight: 600;
+            color: #4f46e5;
+            background-color: #ede9fe;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+        p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+          .subtitle {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 24px;
+          }
+          .main-content {
+            flex-grow: 1;
+            padding: 30px;
+        }
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subheader {
+            font-size: 14px;
+            color: #5f6368;
+        /
+        }
+        .profile-section {
+            background-color: #fff;
+        }
+        .profile-picture {
+            width: 70px;
+            height: 70px;
+            background: rgba(219, 226, 250, 1);
+            border-radius: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            color: rgba(76, 111, 230, 1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .camera-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #355fcf;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+        }
+        .lock{
+        width: 12px;
+        height: 15px;
+        }
+        .form-group {
+            /* margin-top:30px; */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-group .edit-link {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 14px;
+        
+            margin-bottom: 70px;
+        }
+        .delete-account {
+            color: #d93025;
+            text-decoration: none;
+            font-size: 14px;
+            
+        }
+        .delete{
+            margin-top: 20px;
+        }
+        .delete2{
+            margin-top: -20px;
+        }
+        .did{
+            margin-top: 20px;
+            margin-right: 40px;
+        }
+        .did2{
+            font-size: 13px;
+            margin-top: -20px;
+        }
+        .user-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-panel span {
+            margin-left: 8px;
+            font-weight: 500;
+        }
+    
+        a {
+            text-decoration: none;
+            color: rgba(107, 114, 128, 1);
+
+        }
+        .tab-icon {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 1000;
+        } 
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .tab-icon {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+      <div class="sidebar" id="sidebar">
+          <div class="logo" onclick="toggleMobileMenu()">
+              <img src="Effico-logo.png" alt="TIME-OUT">
+              <span>effico<b class="ai-color">ai</b></span>
+          </div>
+          <div class="menu-item">
+              <img src="home.png" alt="Home icon" class="icon_menu"> 
+              <span>Dashboard</span>
+          </div>
+          <div class="menu-item">
+              <img src="chart-.png" alt="Analytics icon" class="icon_menu">           
+              <span>Analytics</span>
+          </div>
+          <div class="menu-item">
+              <img src="3 User.png" alt="Users icon" class="icon_menu"> 
+              <span>Users</span>
+          </div>
+          <div class="menu-item" onclick="toggleSubmenu()">
+              <img src="setting.png" alt="Settings icon" class="icon_menu"> 
+              <span>Settings</span>
+          </div>
+          <div class="submenu" id="settings-submenu">
+              <div class="menu-item">Company</div>
+              <div class="menu-item"><a href="company_profile.html">Company Profile</a></div>
+              <div class="menu-item active">Integrations</div>
+              <div class="menu-item"><a href="team_members.html">Team members</a></div>
+              <div class="menu-item"><a href="roles.html">Roles</a></div>
+          </div>
+          <div class="menu-item active">My profile</div>
+          <div class="menu-item"><a href="notification.html">Notifications</a></div>
+          <div class="menu-item"><a href="security.html">Security</a></div>
+      </div>
+      <div class="main-content">
+        <div class="header">Profile</div>
+        <div class="subheader">Make changes to your profile here. You can only change your username twice.</div>
+        <hr>
+        <div class="profile-section">
+            <div class="profile-picture">
+                J
+                <img src="Camera2.png" alt="Camera Icon" class="camera-icon">
+            </div>
+            <div class="form-group">
+              <div>
+                <p><b>Email Address</b></p>
+                <p class="did2">You can’t change your email address at this time</p>
+              </div>
+                <P>johndoe@icloud.com</P>
+                <span  class="did"><img src="Lock.png" alt="not available" class="lock"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div>
+                <p>Full Name</p>
+                <p class="did2">Your full display name.</p>
+              </div>
+                <P>John Doe</P>
+                <span class="did"><a href="#" class="edit-link">Edit</a></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div>
+                <p>Username</p>
+                <p class="did2">You can only change your username once</p>
+              </div>
+                <P>@johndoe</P>
+                <span class="did"><a href="#" class="edit-link">Edit</a></span>
+            </div>
+            <hr>
+            <div>
+                <p class="delete">Account</p>
+                <p class="delete2"><a href="#" class="delete-account">Delete your account</a></p>
+            </div>
+        </div>
+      </div>
+      <div class="user-panel">  
+        <img src="Avatar1.png" alt="Jane Doe" class="avatar">
+        <span>Jane Doe</span> 
+    </div>
+    <button class="tab-icon" onclick="toggleMobileMenu()">☰</button>
+
+    <script>
+        function toggleSubmenu() {
+            var submenu = document.getElementById("settings-submenu");
+            if (submenu.style.display === "none" || submenu.style.display === "") {
+                submenu.style.display = "block";
+            } else {
+                submenu.style.display = "none";
+            }
+        }
+        function toggleMobileMenu() {
+            var sidebar = document.getElementById("sidebar");
+            if (sidebar.style.display === "none" || sidebar.style.display === "") {
+                sidebar.style.display = "block";
+            } else {
+                sidebar.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<html><head>
+  <title>effico</title>
+  <style>
+  body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+  }
+  .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+  }
+  .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+  .title {
+      font-size: 22px;
+      color: #202124;
+  }
+  .close-button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #5f6368;
+      cursor: pointer;
+  }
+  .form-group {
+      margin-bottom: 15px;
+     
+  }
+
+   
+  .form-group label {
+      display: block;
+      font-size: 14px;
+      color: #5f6368;
+      margin-bottom: 5px;
+  }
+  .form-group input[type="text"] {
+      width: 452px;
+      height: 48px;
+      padding: 8px;
+      background-color:  #f0f0f0;
+      border: 1px solid  #f0f0f0;
+      border-radius: 4px;
+      font-size: 14px;
+  }
+  .description {
+      font-size: 14px;
+      color: #5f6368;
+      margin-bottom: 20px;
+  }
+  .permissions-group {
+      margin-bottom: 20px;
+  }
+  .permissions-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #202124;
+      margin-bottom: 10px;
+  }
+  .permission-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+  }
+  .permission-item input[type="checkbox"] {
+      margin-right: 10px;
+  }
+  .permission-item label {
+      font-size: 14px;
+      color: #202124;
+  }
+  </style>
+  </head>
+  <body>
+  <div class="container">
+      <div class="header">
+          <div class="title">Role permissions</div>
+          <button class="close-button">×</button>
+      </div>
+      <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" value="Owner">
+      </div>
+      <div class="form-group">
+        <label for="description">description</label>
+        <input type="text" id="name" value=""> 
+      </div>
+      <div>
+        <div class="permissions-title"> Team members this role</div>
+        <img class="integration-logo" src="icon131.png" alt="Stripe logo">
+      </div>
+      <div class="permissions-group">
+          <div class="permissions-title">Team Management Permissions</div>
+          <div class="permission-item">
+              <input type="checkbox" id="invite-team-members" checked>
+              <label for="invite-team-members">Can invite team members</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-team-members" checked>
+              <label for="edit-team-members">Can edit team members</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-team-members" checked>
+              <label for="delete-team-members">Can delete team members</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-team-members" checked>
+              <label for="create-custom-roles">Can create custom roles</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-team-members" checked>
+              <label for="edit-custom-roles">Can edit custom roles</label>
+          </div>
+      </div>
+      <div class="permissions-group">
+          <div class="permissions-title">User Management Permissions</div>
+          <div class="permission-item">
+              <input type="checkbox" id="create-users" checked>
+              <label for="create-users">Can create users</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-users" checked>
+              <label for="edit-users">Can edit existing user’s info</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-users" checked>
+              <label for="delete-users">Can delete existing user from the database</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-users" checked>
+              <label for="read-existing-user’s">Can read existing user’s info and analytics</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-users" checked>
+              <label for="user-additional-tokens">Can give user additional tokens</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-users" checked>
+              <label for="change-user’s-subscription">Can change user’s subscription plan</label>
+          </div>
+      </div>
+      <div class="permissions-group">
+          <div class="permissions-title">Token management</div>
+          <div class="permission-item">
+              <input type="checkbox" id="create-teams" checked>
+              <label for="token-balance">Can view token balance</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-teams" checked>
+              <label for="token-analytics">Can view token analytics</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-teams" checked>
+              <label for="add-to-user’s-token">Can add to user’s token balance</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="delete-teams" checked>
+              <label for="deduct-from-user’s">Can deduct from user’s token balance</label>
+          </div>
+      </div>
+      <div class="permissions-group">
+          <div class="permissions-title">Settings permissions</div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-company-info" checked>
+              <label for="edit-company-info">Can edit company info</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="edit-billing-settings" checked>
+              <label for="generate new API">Can generate new API keys</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="cancel-subscription" checked>
+              <label for="remove-integrations">Can connect and remove integrations</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="view-api-key" checked>
+              <label for="view-api-key">Can view API key</label>
+          </div> 
+      <div class="permissions-group">
+          <div class="permissions-title">Analytics Permissions</div>
+          <div class="permission-item">
+              <input type="checkbox" id="view-analytics" checked>
+              <label for="view-analytics">Can view dashboard data analytics</label>
+          </div>
+          <div class="permission-item">
+              <input type="checkbox" id="view-analytics" checked>
+              <label for="ownload dashboard data">Can download dashboard data and analytics</label>
+          </div>
+      </div>
+  </div>
+  </body></html>
