@@ -155,8 +155,9 @@
             border: 1px solid #888;
             width: 80%;
             max-width: 500px;
-            border-radius: 10px;
+            border-radius: 24px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            
         }
         .modal-content h2 {
             font-size: 18px;
@@ -167,27 +168,41 @@
             margin: 10px 0 5px;
         }
         .modal-content input {
-            width: 100%;
+            width: 402px;
+            height: 44px;
             padding: 8px;
             margin: 5px 0 10px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 12px;
+        }
+        input[type="password"]{
+            background-color: #d8d5d5;
         }
         .modal-content button {
-            background-color: #4f46e5;
-            color: white;
+            background-color: rgba(229, 231, 235, 1);
+            color: rgb(0, 0, 0);
             padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 12px;
             cursor: pointer;
             margin-top: 10px;
+            width: 193px;
+            height: 51px; 
+        }
+        .btn{
+            display: flex;
+            justify-content: center;
+        }
+        .btm{
+            margin-top: -13px;
         }
         .modal-content .cancel {
-            background-color: #ccc;
+            background-color: #4674f5;
             margin-left: 10px;
+            color: #ffffff;
         }
         .close {
-            color: #aaa;
+            color: #ffffff;
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -251,7 +266,7 @@
                 <div class="menu-item"><a href="team_members.html">Team members</a></div>
                 <div class="menu-item"><a href="roles.html">Roles</a></div>
             </div>
-            <div class="menu-item">My profile</div>
+            <div class="menu-item"><a href="profile.html">My profile</a></div>
             <div class="menu-item"><a href="notification.html">Notifications</a></div>
             <div class="menu-item active">Security</div>
         </div>
@@ -265,7 +280,7 @@
                     <div class="notification-description">Enable/disable push notifications in-app</div>
                 </div>
                 <label class="toggle-switch">
-                    <button class="integration-button backup">change password</button>
+                    <button class="integration-button backup" onclick="openPasswordModal()">Change Password</button>
                 </label>
             </div>
             <hr>
@@ -281,90 +296,65 @@
             <hr>
             <div class="separate">
                 <div class="notification-section">
-                    <div class="notification-title">2-Factor Authentication</div>
-                    <div class="notification-description">Reset or change the authentication app.</div>
+                    <div class="notification-title">Two-factor Authentication (2FA)</div>
+                    <div class="notification-description">Add an extra layer of security to your account with 2FA</div>
                 </div>
                 <label class="toggle-switch">
-                    <button class="integration-button">Reset Authentication app</button>
+                    <button class="integration-button backup">Activate</button>
                 </label>
-            </div> 
-            <hr> 
-        </div>
-        <div class="user-panel">  
-            <img src="Avatar1.png" alt="Jane Doe" class="avatar" style="width: 32px; height: 32px;">
-            <span>Jane Doe</span> 
-        </div>
-        <div id="passwordModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Change password</h2>
-                <form>
-                    <label for="currentPassword">Current Password*</label>
-                    <input type="password" id="currentPassword" name="currentPassword" required>
-                    <label for="newPassword">New Password*</label>
-                    <input type="password" id="newPassword" name="newPassword" required>
-                    <label for="confirmNewPassword">Confirm New Password*</label>
-                    <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
-                    <button type="submit">Save Changes</button>
-                    <button type="button" class="cancel">Cancel</button>
-                </form>
             </div>
         </div>
-        <button class="tab-icon" onclick="toggleMobileMenu()">☰</button>
     </div>
+    <div class="user-panel">
+        <img src="avatar.png" alt="User avatar" style="width: 30px; height: 30px; border-radius: 50%;">
+        <span>John Doe</span>
+    </div>
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePasswordModal()">&times;</span>
+            <h2>Change Password</h2>
+            <p class="btm">Please update your here.</p>
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" name="currentPassword" placeholder="••••••••">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" name="newPassword" placeholder="••••••••">
+            <p font-size="10px" class="btm">Min. 8 characters - one uppercase, one lowercase, and one number.</p>
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••">
+            <div class="btn">
+                <button type="button" onclick="closePasswordModal()">cancel</button>
+                <button type="button" class="cancel" onclick="closePasswordModal()">Save Changes</button>
+            </div>
+
+        </div>
+    </div>
+    <button class="tab-icon" onclick="toggleMobileMenu()">☰</button>
     <script>
         function toggleSubmenu() {
             var submenu = document.getElementById("settings-submenu");
-            if (submenu.style.display === "none" || submenu.style.display === "") {
-                submenu.style.display = "block";
-            } else {
-                submenu.style.display = "none";
-            } 
+            submenu.style.display = submenu.style.display === "none" ? "block" : "none";
+        }
+
+        function openPasswordModal() {
+            var modal = document.getElementById("passwordModal");
+            modal.style.display = "block";
+        }
+
+        function closePasswordModal() {
+            var modal = document.getElementById("passwordModal");
+            modal.style.display = "none";
         }
 
         function toggleMobileMenu() {
             var sidebar = document.getElementById("sidebar");
-            var tabIcon = document.querySelector(".tab-icon");
-            if (sidebar.style.display === "none" || sidebar.style.display === "") {
-                sidebar.style.display = "block";
-                tabIcon.style.display = "none";
-            } else {
-                sidebar.style.display = "none";
-                tabIcon.style.display = "block";
-            }
+            sidebar.style.display = sidebar.style.display === "none" ? "block" : "none";
         }
 
-        // Get modal element
-        var modal = document.getElementById("passwordModal");
-
-        // Get open modal buttons
-        var buttons = document.querySelectorAll(".integration-button");
-
-        // Get close button
-        var span = document.getElementsByClassName("close")[0];
-
-        // Open modal
-        buttons.forEach(function(btn) {
-            btn.onclick = function() {
-                modal.style.display = "block";
-            }
-        });   
-
-        // Close modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // Close modal when clicking outside of it
         window.onclick = function(event) {
+            var modal = document.getElementById("passwordModal");
             if (event.target == modal) {
                 modal.style.display = "none";
             }
-        }
-
-        // Cancel button
-        document.querySelector(".cancel").onclick = function() {
-            modal.style.display = "none";
         }
     </script>
 </body>

@@ -16,7 +16,7 @@
             width: 240px;
             background-color: white;
             padding: 20px;
-            box-shadow: 2px 0 5px rgba(15, 15, 15, 0.1);
+            box-shadow: 2px 0 5px rgba(15, 15, 15, 0.1);         
         }
         .main-content {
             flex-grow: 1;
@@ -197,6 +197,117 @@
               font-weight: 500;
           }
          
+          /* Additional CSS for Popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    position: relative;
+}
+.popup-content .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #5f6368;
+}
+.header2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+  .title2 {
+      font-size: 22px;
+      color: #202124;
+  }
+  .close-button2 {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #5f6368;
+      cursor: pointer;
+  }
+  .form-group2 {
+      margin-bottom: 20px;
+  }
+  .form-group2 label {
+      display: block;
+      font-size: 14px;
+      color: #5f6368;
+      margin-bottom: 5px;
+  }
+  .form-group2 input[type="text"] {
+      width: 452px;
+      height: 48px;
+      padding: 8px;
+      background-color:  #f0f0f0;
+      border: 1px solid  #f0f0f0;
+      border-radius: 4px;
+      font-size: 14px;
+  }
+  .permissions-group2 {
+      margin-bottom: 20px;
+  }
+  .permissions-title2 {
+      font-size: 14px;
+      font-weight: bold;
+      color: #202124;
+      margin-bottom: 10px;
+  }
+  .permission-item2 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+  }
+  .permission-item2 input[type="checkbox"] {
+      margin-right: 10px;
+  }
+  .permission-item2 label {
+      font-size: 14px;
+      color: #202124;
+  }
+  .footer2 {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+  }
+  .button {
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      height: 51px;
+  }
+  .cancel-button2 {
+    width: 160px;
+      background-color: #fff;
+      color: #1a73e8;
+      border: 1px solid #dadce0;
+      margin-right: 8px;
+  }
+  .save-button2 {
+      width: 276px;
+      background-color: #1a73e8;
+      color: #fff;
+      border: none;
+  }
+  
+
         .user-panel {
             position: fixed;
             bottom: 20px;
@@ -283,7 +394,7 @@
                     <div class="menu-item"><a href="team_members.html">Team members</a></div>
                     <div class="menu-item active" >Roles</div>
                 </div>
-                <div class="menu-item">My profile</div>
+                <div class="menu-item"><a href="profile.html">My profile</a></div>
                 <div class="menu-item"><a href="notification.html">Notifications</a></div>
                 <div class="menu-item"><a href="security.html">Security</a></div>
             </div>
@@ -325,6 +436,141 @@
                     <button class="integration-button">See permissions</button>.
                 </div>
             </div>
+            <!-- Popup for creating a custom role -->
+            <div class="popup" id="popup">
+                <div class="popup-content">
+                    <button class="close-button2" id="popup-close">×</button>
+                    <div class="header2">
+                        <div class="title2">Create custom role</div>
+                    </div>
+                    <p class="text">Define and assign the permissions and access for team members<br> with this  You can make changes to this much later.</p>
+                    <div class="form-group2">
+                        <label for="popup-name">Name</label>
+                        <input type="text" id="popup-name">
+                        <p>Give the role a short and clear Name.</p>
+                    </div>
+                    <div class="form-group2">
+                        <label for="popup-description">Description</label>
+                        <input type="text" id="popup-description">
+                    </div>
+                    <!-- Permissions groups here -->
+                    <div class="permissions-group2">
+                        <div class="permissions-title2">Team Management Permissions</div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-invite-team-members">
+                            <label for="popup-invite-team-members">Can invite new team members</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-edit-team-members">
+                            <label for="popup-edit-team-members">Can remove existing team members</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-delete-team-members">
+                            <label for="popup-delete-team-members">Can change team member's role</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-create-custom-roles">
+                            <label for="popup-create-custom-roles">Can create custom roles</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-edit-custom-roles">
+                            <label for="popup-edit-custom-roles">Can edit custom roles</label>
+                        </div>
+                    </div>
+                    <div class="permissions-group2">
+                        <div class="permissions-title2">User Management Permissions</div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-create-users">
+                            <label for="popup-create-users">Can create users</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-edit-users">
+                            <label for="popup-edit-users">Can edit users</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-delete-users">
+                            <label for="popup-delete-users">Can delete users</label>
+                        </div>
+                    </div>
+                    <div class="permissions-group2">
+                        <div class="permissions-title2">Team Management</div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-create-teams">
+                            <label for="popup-create-teams">Can create teams</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-edit-teams">
+                            <label for="popup-edit-teams">Can delete existing user from the database</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-delete-teams">
+                            <label for="popup-delete-teams">Can read existing user’s info and analytics</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-edit-teams">
+                            <label for="popup-edit-teams">Can edit existing user’s info</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-give-user-additional">
+                            <label for="popup-give-user-additional">Can give user additional tokens</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-change-user-subscription">
+                            <label for="popup-change-user-subscription">Can change user’s subscription plan</label>
+                        </div>
+                    </div>
+                    <div class="permissions-group2">
+                        <div class="permissions-title2">Settings permissions</div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-edit-company-info">
+                            <label for="popup-edit-company-info">Can view company info</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-edit-billing-settings">
+                            <label for="popup-edit-billing-settings">Can edit company’s info</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-cancel-subscription">
+                            <label for="popup-cancel-subscription">Can connect and remove integrations</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-view-api-key">
+                            <label for="popup-view-api-key">Can view API key</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-generate-new-api-key">
+                            <label for="popup-generate-new-api-key">Can generate new API keys</label>
+                        </div>
+                    </div>
+                    <div class="permissions-group2">
+                        <div class="permissions-title2">Content Management Permissions</div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-create-content">
+                            <label for="popup-create-content">Can read existing resources and articles</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-edit-content">
+                            <label for="popup-edit-content">Can create new resources and articles</label>
+                        </div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-delete-content">
+                            <label for="popup-delete-content">Can delete existing resources and articles</label>
+                        </div>
+                    </div>
+                    <div class="permissions-group2">
+                        <div class="permissions-title2">Analytics Permissions</div>
+                        <div class="permission-item2">
+                            <input type="checkbox" id="popup-view-analytics">
+                            <label for="popup-view-analytics">Can view analytics</label>
+                        </div>
+                    </div>
+                    <div class="footer2">
+                        <button class="button cancel-button2" id="popup-cancel">Cancel</button>
+                        <button class="button save-button2" id="popup-save">Save and continue</button>
+                    </div>
+                </div>
+            </div>
+
             
         </div>
         <div class="user-panel">  
@@ -350,6 +596,58 @@
                     sidebar.style.display = "none";
                 }
             }
+            document.querySelector('.create-button').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'flex';
+});
+
+document.getElementById('popup-close').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'none';
+});
+
+document.getElementById('popup-cancel').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'none';
+});
+
+document.getElementById('popup-save').addEventListener('click', function() {
+    const name = document.getElementById('popup-name').value;
+    const description = document.getElementById('popup-description').value;
+
+    const permissions = {
+        'invite-team-members': document.getElementById('popup-invite-team-members').checked,
+        'edit-team-members': document.getElementById('popup-edit-team-members').checked,
+        'delete-team-members': document.getElementById('popup-delete-team-members').checked,
+        'create-custom-roles': document.getElementById('popup-create-custom-roles').checked,
+        'edit-custom-roles': document.getElementById('popup-edit-custom-roles').checked,
+        'create-users': document.getElementById('popup-create-users').checked,
+        'edit-users': document.getElementById('popup-edit-users').checked,
+        'delete-users': document.getElementById('popup-delete-users').checked,
+        'create-teams': document.getElementById('popup-create-teams').checked,
+        'edit-teams': document.getElementById('popup-edit-teams').checked,
+        'delete-teams': document.getElementById('popup-delete-teams').checked,
+        'edit-company-info': document.getElementById('popup-edit-company-info').checked,
+        'edit-billing-settings': document.getElementById('popup-edit-billing-settings').checked,
+        'cancel-subscription': document.getElementById('popup-cancel-subscription').checked,
+        'view-api-key': document.getElementById('popup-view-api-key').checked,
+        'generate-new-api-key': document.getElementById('popup-generate-new-api-key').checked,
+        'create-content': document.getElementById('popup-create-content').checked,
+        'edit-content': document.getElementById('popup-edit-content').checked,
+        'delete-content': document.getElementById('popup-delete-content').checked,
+        'view-analytics': document.getElementById('popup-view-analytics').checked,
+    };
+
+    const roleData = {
+        name: name,
+        description: description,
+        permissions: permissions
+    };
+
+    // Save role data to local storage
+    let roles = JSON.parse(localStorage.getItem('roles')) || [];
+    roles.push(roleData);
+    localStorage.setItem('roles', JSON.stringify(roles));
+
+    document.getElementById('popup').style.display = 'none';
+});
         </script>
     </div>
     </body></html>
