@@ -1,120 +1,116 @@
-<html><head>
-  <style>
-  body, html {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: rgb(255, 255, 255);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-  }
-  .modal {
-      background-color: white;
-      border-radius: 15px;
-      width: 400px;
-      padding: 24px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-  }
-  .modal-title {
-      font-size: 18px;
-      font-weight: 500;
-      color: #202124;
-  }
-  .close-button {
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: #5f6368;
-      cursor: pointer;
-  }
-  .form-group {
-      margin-top: 40px;
-  }
-  .form-group label {
-      display: block;
-      font-size: 12px;
-      color: #5f6368;
-      margin-bottom: 4px;
-  }
-  .form-group input {
-      width: 100%;
-      height: 64px;
-      padding: 8px;
-      border: 1px solid #dadce0;
-      border-radius: 10px;
-      font-size: 14px;
-      box-sizing: border-box;
-  }
-
-  input[type="password"] {
-    background-color:  #f0f0f0;
+<html>
+    <head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Share User Feedback Report</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }
+    .modal {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+    }
+    h1 {
+        font-size: 1.5em;
+        color: #333;
+        margin-top: 0;
+    }
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .share-btn {
+        background-color: #f0f0f0;
+        color: #333;
+        border: 1px solid #ccc;
+    }
+    .download-btn {
+        background-color: #4285f4;
+        color: white;
+        border: none;
+    }
+    .share-btn:hover {
+        background-color: #e0e0e0;
+    }
+    .download-btn:hover {
+        background-color: #3367d6;
+    }
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.5em;
+        color: #888;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+</style>
+</head>
+<body>
+    <div class="modal">
+        <button class="close-btn">&times;</button>
+        <h1>Share User Feedback report</h1>
+        <div class="button-container">
+            <button class="button share-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 6.65685 16.3431 8 18 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M18 22C19.6569 22 21 20.6569 21 19C21 17.3431 19.6569 16 18 16C16.3431 16 15 17.3431 15 19C15 20.6569 16.3431 22 18 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.59 13.51L15.42 17.49" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.41 6.51L8.59 10.49" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Share
+            </button>
+            <button class="button download-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 10L12 15L17 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 15V3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Download Reports
+            </button>
+        </div>
+    </div>
 
-  .help-link {
-      font-size: 12px;
-      color: #1a73e8;
-      text-decoration: none;
-      margin-left: 4px;
-  }
-  .modal-footer {
-      display: flex;
-      justify-content: center;
-      margin-top: 24px;
-  }
-  .modal-button {
-    width: 193px;
-    height: 51px;
-      padding: 8px 16px;
-      border-radius: 15px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-  }
-  .cancel-button {
-      background-color: white;
-      color: #1a73e8;
-      border: 1px solid #dadce0;
-      margin-right: 8px;
-  }
-  .next-button {
-      background-color: #1a73e8;
-      color: white;
-      border: none;
-  }
-  a {
-            text-decoration: none;
-            }
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.querySelector('.close-btn');
+    const modal = document.querySelector('.modal');
+    
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
 
-  .tlm{
-    margin-top: -15px;
-  }
-  </style>
-  </head>
-  <body>
-  <div class="modal">
-      <div class="modal-header">
-          <span class="modal-title">Zapier Settings</span>
-          <button class="close-button">×</button>
-      </div>
-      <p class="tlm">Connect your zapier account <a href="#">Help </a></p>
-      <div class="form-group">
-          <label for="zapier-api-key">Zapier API Key*</label>
-          <input type="password"  placeholder="••••••••••••••••">
-      </div>
-      <div style="font-size: 12px; color: #5f6368;">
-          You can find your API Key <a href="#" class="help-link">here</a>
-      </div>
-      <div class="modal-footer">
-          <button class="modal-button cancel-button">Cancel</button>
-          <button class="modal-button next-button">Next</button>
-      </div>
-  </div>
-  </body></html>
+    const shareBtn = document.querySelector('.share-btn');
+    shareBtn.addEventListener('click', function() {
+        // Implement share functionality
+        console.log('Share button clicked');
+    });
+
+    const downloadBtn = document.querySelector('.download-btn');
+    downloadBtn.addEventListener('click', function() {
+        // Implement download functionality
+        console.log('Download button clicked');
+    });
+});
+</script>
+</body></html>

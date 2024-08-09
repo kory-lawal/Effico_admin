@@ -234,10 +234,13 @@
               <img src="chart-.png" alt="Analytics icon" class="icon_menu">           
               <span>Analytics</span>
           </div>
-          <div class="menu-item">
-              <img src="3 User.png" alt="Users icon" class="icon_menu"> 
-              <span>Users</span>
-          </div>
+          <div class="menu-item"  onclick="toggleSubmenu1()">
+            <img src="3 User.png" alt="Users icon" class="icon_menu"> 
+            <span>Users</span>
+        </div>
+        <div class="submenu1" id="feedback-submenu">
+          <div class="menu-item active"> <img src="person1.png" alt="Users icon" class="icon_menu"> <a href="feedback.html">User Feedback</a></div>
+        </div>
           <div class="menu-item" onclick="toggleSubmenu()">
               <img src="setting.png" alt="Settings icon" class="icon_menu"> 
               <span>Settings</span>
@@ -310,6 +313,14 @@
                 submenu.style.display = "none";
             }
         }
+        function toggleSubmenu1() {
+        var submenu = document.getElementById("feedback-submenu");
+        if (submenu.style.display === "none" || submenu.style.display === "") {
+            submenu.style.display = "block";
+        } else {
+            submenu.style.display = "none";
+        } 
+    }
         function toggleMobileMenu() {
             var sidebar = document.getElementById("sidebar");
             if (sidebar.style.display === "none" || sidebar.style.display === "") {
