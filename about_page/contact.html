@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contact-form-container {
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            margin: 50px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-form-container h2 {
+            color: #007bff;
+        }
+
+        .contact-form-container p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group label span {
+            color: red;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            font-size: 18px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .social-icons i {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-form-container">
+        <h2>Contact Us</h2>
+        <p>In order to get more information from us you can reach us by filling the Get In Touch form and we do well to respond as soon as possible</p>
+        <form action="submit_form.php" method="POST">
+            <div class="form-group">
+                <label for="full-name">Full Name<span>*</span></label>
+                <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email<span>*</span></label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message<span>*</span></label>
+                <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <!-- FontAwesome CDN for social media icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
