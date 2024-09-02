@@ -351,6 +351,116 @@
             width: 24px;
             height: 24px;
         }
+        .contact-popup {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-form-container {
+        max-width: 400px;
+        background-color: white;
+        padding: 20px;
+        margin: 50px auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+    }
+        .contact-form-container {
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            margin: 50px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-form-container h2 {
+            color: #007bff;
+        }
+
+        .contact-form-container p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            color: black;
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group label span {
+            color: red;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 30%;
+            font-size: 18px;
+            color:#007bff;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .social-icons i {
+            font-size: 24px;
+        }
 
         @media (max-width: 10%) {
             .mockups {
@@ -377,7 +487,7 @@
             <nav>  
                 <ul id="nav-links">
                     <li><a href="#" class="active">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li onclick="togglePopup()"><a href="#">Contact Us</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Career</a></li>
                 </ul>
@@ -454,7 +564,36 @@
         <a href="#"><img src="Frame 61587.png" alt="Download on the App Store"></a>
         <a href="#"><img src="Frame 61574.png" alt="Get it on Google Play"></a>
     </div>
-  </section>
+    <div id="contact-popup" class="contact-popup">
+        <div class="contact-form-container">
+            <h2>Contact Us</h2>
+            <p>In order to get more information from us you can reach us by filling the Get In Touch form and we do well to respond as soon as possible</p>
+            <form action="submit_form.php" method="POST">
+                <div class="form-group">
+                    <label for="full-name">Full Name<span>*</span></label>
+                    <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email<span>*</span></label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message<span>*</span></label>
+                    <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
 
   <footer class="footer">
     <div class="logo">
@@ -482,6 +621,22 @@
         const navLinks = document.getElementById("nav-links");
         navLinks.classList.toggle("show");
     }
+    function togglePopup() {
+        const contactPopup = document.getElementById("contact-popup");
+        if (contactPopup.style.display === 'block') {
+            contactPopup.style.display = 'none';
+        } else {
+            contactPopup.style.display = 'block';
+        }
+    }
+
+    window.onclick = function(event) {
+        const contactPopup = document.getElementById("contact-popup");
+        if (event.target === contactPopup) {
+            contactPopup.style.display = "none";
+        }
+    }
+        
   </script>
 </body>
 </html>
